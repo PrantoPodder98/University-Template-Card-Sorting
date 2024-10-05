@@ -11,129 +11,131 @@
     <link rel="stylesheet" href="asset/breadcrumb.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
-        .announcements-section {
+        .history-page {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             padding: 4rem 0;
-            background: linear-gradient(to bottom, #f8f9fa, #ffffff);
+            min-height: 100vh;
         }
 
-        .section-title {
+        .page-header {
             text-align: center;
             margin-bottom: 3rem;
+            position: relative;
         }
 
-        .section-title h2 {
-            color: #307e4a;
+        .page-header::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: #307e4a;
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        .page-title {
+            color: #1a1a1a;
             font-size: 2.5rem;
+            font-weight: 700;
             margin-bottom: 1rem;
         }
 
-        .section-title p {
-            color: #666;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .filter-bar {
+        .timeline-section {
             background: white;
-            padding: 1rem;
-            border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            margin-bottom: 2rem;
-        }
-
-        .filter-btn {
-            padding: 0.5rem 1.5rem;
             border-radius: 20px;
-            border: 2px solid #307e4a;
-            background: transparent;
-            color: #307e4a;
-            margin: 0.25rem;
-            transition: all 0.3s ease;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
 
-        .filter-btn:hover,
-        .filter-btn.active {
+        .timeline-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .timeline-icon {
+            width: 50px;
+            height: 50px;
             background: #307e4a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: white;
+            font-size: 1.5rem;
         }
 
-        .announcement-card {
+        .timeline-title {
+            font-size: 1.8rem;
+            color: #1a1a1a;
+            margin: 0;
+        }
+
+        .history-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .history-card {
             background: white;
             border-radius: 15px;
             overflow: hidden;
             transition: all 0.3s ease;
-            margin-bottom: 1.5rem;
-            border: 1px solid rgba(0, 0, 0, 0.08);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
 
-        .announcement-card:hover {
+        .history-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
         }
 
-        .announcement-header {
+        .card-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .history-card:hover .card-image img {
+            transform: scale(1.1);
+        }
+
+        .card-content {
             padding: 1.5rem;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
         }
 
-        .announcement-type {
+        .card-year {
             display: inline-block;
-            padding: 0.25rem 1rem;
-            border-radius: 15px;
+            padding: 0.5rem 1rem;
+            background: #307e4a;
+            color: white;
+            border-radius: 20px;
             font-size: 0.9rem;
-            font-weight: 500;
+            margin-bottom: 1rem;
         }
 
-        .type-academic {
-            background: #e1f5fe;
-            color: #0288d1;
-        }
-
-        .type-admission {
-            background: #f3e5f5;
-            color: #7b1fa2;
-        }
-
-        .type-event {
-            background: #e8f5e9;
-            color: #2e7d32;
-        }
-
-        .type-important {
-            background: #ffebee;
-            color: #c62828;
-        }
-
-        .announcement-date {
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        .announcement-content {
-            padding: 1.5rem;
-        }
-
-        .announcement-title {
+        .card-title {
             font-size: 1.25rem;
+            color: #1a1a1a;
             margin-bottom: 1rem;
-            color: #333;
         }
 
-        .announcement-text {
+        .card-text {
             color: #666;
+            line-height: 1.6;
             margin-bottom: 1rem;
-        }
-
-        .announcement-footer {
-            padding: 1rem 1.5rem;
-            background: #f8f9fa;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
         }
 
         .read-more {
@@ -146,47 +148,46 @@
         }
 
         .read-more:hover {
-            color: #22563c;
+            color: #266940;
         }
 
-        .announcement-meta {
-            display: flex;
-            gap: 1rem;
-            color: #666;
-            font-size: 0.9rem;
+        .stat-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
         }
 
-        .meta-item {
-            display: flex;
-            align-items: center;
-            gap: 0.25rem;
-        }
-
-        .search-box {
-            position: relative;
-            margin-bottom: 2rem;
-        }
-
-        .search-box input {
-            width: 100%;
-            padding: 1rem 1.5rem;
-            border-radius: 25px;
-            border: 2px solid #ddd;
+        .stat-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
             transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.08);
         }
 
-        .search-box input:focus {
-            border-color: #307e4a;
-            box-shadow: 0 0 0 0.2rem rgba(48, 126, 74, 0.25);
-            outline: none;
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
-        .search-icon {
-            position: absolute;
-            right: 1.5rem;
-            top: 50%;
-            transform: translateY(-50%);
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #307e4a;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
             color: #666;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .history-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -367,167 +368,112 @@
         </div>
     </nav>
 
-    <nav class="custom-breadcrumb" aria-label="breadcrumb">
+    <!-- Hero Section -->
+
+    <<nav class="custom-breadcrumb" aria-label="breadcrumb">
         <div class="container">
             <ol class="breadcrumb-list">
                 <li class="breadcrumb-item">
                     <a href="index2.html"><i class="fas fa-home"></i></a>
                 </li>
                 <li class="breadcrumb-item">
-                    <a href="#">News and Event</a>
+                    <a href="#">About</a>
                 </li>
-                <li class="breadcrumb-item active">
-                    <a href="#">Announcement</a>
+                <li class="breadcrumb-item">
+                    <a href="information.html">Information And History</a>
                 </li>
             </ol>
         </div>
     </nav>
 
     <div class="my-5">
-        <section class="announcements-section">
+        <section class="history-page">
             <div class="container">
-                <div class="section-title">
-                    <h2>Announcements</h2>
-                    <p>Stay updated with the latest announcements from Nextgen University</p>
+                <div class="page-header">
+                    <h1 class="page-title">Our History & Legacy</h1>
+                    <p>Shaping the future through excellence in education since 1990</p>
                 </div>
-
-                <!-- Search Box -->
-                <div class="search-box">
-                    <input type="text" placeholder="Search announcements...">
-                    <i class="fas fa-search search-icon"></i>
-                </div>
-
-                <!-- Filter Bar -->
-                <div class="filter-bar text-center">
-                    <button class="filter-btn active">All</button>
-                    <button class="filter-btn">Academic</button>
-                    <button class="filter-btn">Admission</button>
-                    <button class="filter-btn">Events</button>
-                    <button class="filter-btn">Important</button>
-                </div>
-
-                <!-- Announcements Grid -->
-                <div class="row">
-                    <!-- Important Announcement -->
-                    <div class="col-lg-6">
-                        <div class="announcement-card">
-                            <div class="announcement-header">
-                                <span class="announcement-type type-important">Important</span>
-                                <span class="announcement-date">October 5, 2024</span>
-                            </div>
-                            <div class="announcement-content">
-                                <h3 class="announcement-title">Fall 2024 Semester Registration Deadline</h3>
-                                <p class="announcement-text">All students must complete their course registration for
-                                    Fall 2024 semester by October 15, 2024. Late registration will incur additional
-                                    fees.</p>
-                            </div>
-                            <div class="announcement-footer">
-                                <a href="announcement-details.html" class="read-more">
-                                    Read More
-                                    <i class="fas fa-arrow-right"></i>
-                                </a>
-                                <div class="announcement-meta">
-                                    <span class="meta-item">
-                                        <i class="fas fa-eye"></i> 1,245
-                                    </span>
-                                    <span class="meta-item">
-                                        <i class="fas fa-download"></i> 85
-                                    </span>
-                                </div>
-                            </div>
+    
+                <!-- Timeline Section -->
+                <div class="timeline-section">
+                    <div class="timeline-header">
+                        <div class="timeline-icon">
+                            <i class="fas fa-landmark"></i>
                         </div>
+                        <h2 class="timeline-title">Our Journey Through Time</h2>
                     </div>
-
-                    <!-- Academic Announcement -->
-                    <div class="col-lg-6">
-                        <div class="announcement-card">
-                            <div class="announcement-header">
-                                <span class="announcement-type type-academic">Academic</span>
-                                <span class="announcement-date">October 4, 2024</span>
+    
+                    <div class="history-grid">
+                        <!-- Founding Years Card -->
+                        <div class="history-card">
+                            <div class="card-image">
+                                <img src="asset/img/slider/1.webp" alt="University founding">
                             </div>
-                            <div class="announcement-content">
-                                <h3 class="announcement-title">New Research Collaboration with MIT</h3>
-                                <p class="announcement-text">We're excited to announce a new research partnership with
-                                    MIT in the field of Artificial Intelligence and Machine Learning.</p>
-                            </div>
-                            <div class="announcement-footer">
-                                <a href="announcement-details.html" class="read-more">
-                                    Read More
-                                    <i class="fas fa-arrow-right"></i>
-                                </a>
-                                <div class="announcement-meta">
-                                    <span class="meta-item">
-                                        <i class="fas fa-eye"></i> 892
-                                    </span>
-                                    <span class="meta-item">
-                                        <i class="fas fa-download"></i> 43
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Admission Announcement -->
-                    <div class="col-lg-6">
-                        <div class="announcement-card">
-                            <div class="announcement-header">
-                                <span class="announcement-type type-admission">Admission</span>
-                                <span class="announcement-date">October 3, 2024</span>
-                            </div>
-                            <div class="announcement-content">
-                                <h3 class="announcement-title">Spring 2025 Admission Schedule</h3>
-                                <p class="announcement-text">The admission schedule for Spring 2025 semester has been
-                                    published. Early application deadline is November 30, 2024.</p>
-                            </div>
-                            <div class="announcement-footer">
+                            <div class="card-content">
+                                <span class="card-year">1990</span>
+                                <h3 class="card-title">The Founding Vision</h3>
+                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
                                 <a href="#" class="read-more">
-                                    Read More
-                                    <i class="fas fa-arrow-right"></i>
+                                    Learn More <i class="fas fa-arrow-right"></i>
                                 </a>
-                                <div class="announcement-meta">
-                                    <span class="meta-item">
-                                        <i class="fas fa-eye"></i> 1,567
-                                    </span>
-                                    <span class="meta-item">
-                                        <i class="fas fa-download"></i> 234
-                                    </span>
-                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Growth Period Card -->
+                        <div class="history-card">
+                            <div class="card-image">
+                                <img src="asset/img/slider/2.webp" alt="Campus expansion">
+                            </div>
+                            <div class="card-content">
+                                <span class="card-year">2000</span>
+                                <h3 class="card-title">Era of Expansion</h3>
+                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
+                                <a href="#" class="read-more">
+                                    Learn More <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+    
+                        <!-- Modern Era Card -->
+                        <div class="history-card">
+                            <div class="card-image">
+                                <img src="asset/img/slider/3.webp" alt="Modern campus">
+                            </div>
+                            <div class="card-content">
+                                <span class="card-year">2020</span>
+                                <h3 class="card-title">Digital Revolution</h3>
+                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</p>
+                                <a href="#" class="read-more">
+                                    Learn More <i class="fas fa-arrow-right"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Event Announcement -->
-                    <div class="col-lg-6">
-                        <div class="announcement-card">
-                            <div class="announcement-header">
-                                <span class="announcement-type type-event">Event</span>
-                                <span class="announcement-date">October 2, 2024</span>
-                            </div>
-                            <div class="announcement-content">
-                                <h3 class="announcement-title">Annual Tech Fest 2024</h3>
-                                <p class="announcement-text">Join us for the biggest technology festival of the year.
-                                    Featuring workshops, hackathons, and guest speakers from leading tech companies.</p>
-                            </div>
-                            <div class="announcement-footer">
-                                <a href="#" class="read-more">
-                                    Read More
-                                    <i class="fas fa-arrow-right"></i>
-                                </a>
-                                <div class="announcement-meta">
-                                    <span class="meta-item">
-                                        <i class="fas fa-eye"></i> 978
-                                    </span>
-                                    <span class="meta-item">
-                                        <i class="fas fa-download"></i> 112
-                                    </span>
-                                </div>
-                            </div>
+    
+                    <!-- Stats Section -->
+                    <div class="stat-cards">
+                        <div class="stat-card">
+                            <div class="stat-number">30+</div>
+                            <div class="stat-label">Years of Excellence</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">50,000+</div>
+                            <div class="stat-label">Alumni Worldwide</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">200+</div>
+                            <div class="stat-label">Academic Programs</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">1000+</div>
+                            <div class="stat-label">Faculty Members</div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
     </div>
+    
 
     <footer class="footer">
         <div class="container">
@@ -608,104 +554,6 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // DOM Elements
-            const searchInput = document.querySelector('.search-box input');
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            const announcements = document.querySelectorAll('.announcement-card');
-
-            // Search functionality
-            searchInput.addEventListener('input', function (e) {
-                const searchTerm = e.target.value.toLowerCase();
-
-                announcements.forEach(announcement => {
-                    const title = announcement.querySelector('.announcement-title').textContent.toLowerCase();
-                    const content = announcement.querySelector('.announcement-text').textContent.toLowerCase();
-
-                    if (title.includes(searchTerm) || content.includes(searchTerm)) {
-                        announcement.style.display = '';
-                    } else {
-                        announcement.style.display = 'none';
-                    }
-                });
-            });
-
-            // Filter functionality
-            filterButtons.forEach(button => {
-                button.addEventListener('click', function () {
-                    // Remove active class from all buttons
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                    // Add active class to clicked button
-                    this.classList.add('active');
-
-                    const filterType = this.textContent.toLowerCase();
-
-                    announcements.forEach(announcement => {
-                        if (filterType === 'all') {
-                            announcement.style.display = '';
-                            return;
-                        }
-
-                        const announcementType = announcement
-                            .querySelector('.announcement-type')
-                            .textContent
-                            .toLowerCase();
-
-                        if (announcementType === filterType) {
-                            announcement.style.display = '';
-                        } else {
-                            announcement.style.display = 'none';
-                        }
-                    });
-                });
-            });
-
-            // Read More functionality
-            // const readMoreLinks = document.querySelectorAll('.read-more');
-            // readMoreLinks.forEach(link => {
-            //     link.addEventListener('click', function(e) {
-            //         e.preventDefault();
-            //         const card = this.closest('.announcement-card');
-            //         const title = card.querySelector('.announcement-title').textContent;
-            //         // You can implement your own logic here for handling "Read More" clicks
-            //         console.log(`Reading more about: ${title}`);
-            //     });
-            // });
-
-            // Animation on scroll
-            function handleScroll() {
-                announcements.forEach(announcement => {
-                    const rect = announcement.getBoundingClientRect();
-                    const isVisible = rect.top <= window.innerHeight && rect.bottom >= 0;
-
-                    if (isVisible) {
-                        announcement.style.opacity = '1';
-                        announcement.style.transform = 'translateY(0)';
-                    }
-                });
-            }
-
-            // Initial setup for animations
-            announcements.forEach(announcement => {
-                announcement.style.opacity = '0';
-                announcement.style.transform = 'translateY(20px)';
-                announcement.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-            });
-
-            // Add scroll listener
-            window.addEventListener('scroll', handleScroll);
-            // Initial check for visible elements
-            handleScroll();
-
-            // Update view count on read more click (demo purposes)
-            function updateViewCount(metaElement) {
-                const viewCount = metaElement.querySelector('.fa-eye').parentElement;
-                const currentCount = parseInt(viewCount.textContent);
-                viewCount.textContent = ` ${currentCount + 1}`;
-            }
-        });
-    </script>
 </body>
 
 </html>

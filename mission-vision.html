@@ -11,182 +11,222 @@
     <link rel="stylesheet" href="asset/breadcrumb.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
-        .announcements-section {
+        .mission-vision-page {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             padding: 4rem 0;
-            background: linear-gradient(to bottom, #f8f9fa, #ffffff);
+            min-height: 100vh;
         }
 
-        .section-title {
+        .page-header {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
+            position: relative;
         }
 
-        .section-title h2 {
-            color: #307e4a;
-            font-size: 2.5rem;
+        .page-title {
+            color: #1a1a1a;
+            font-size: 2.8rem;
+            font-weight: 700;
             margin-bottom: 1rem;
         }
 
-        .section-title p {
+        .page-subtitle {
             color: #666;
+            font-size: 1.2rem;
             max-width: 800px;
             margin: 0 auto;
         }
 
-        .filter-bar {
-            background: white;
-            padding: 1rem;
-            border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            margin-bottom: 2rem;
+        .vision-mission-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
         }
 
-        .filter-btn {
-            padding: 0.5rem 1.5rem;
+        @media (max-width: 992px) {
+            .vision-mission-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .featured-card {
+            background: white;
             border-radius: 20px;
-            border: 2px solid #307e4a;
-            background: transparent;
-            color: #307e4a;
-            margin: 0.25rem;
-            transition: all 0.3s ease;
-        }
-
-        .filter-btn:hover,
-        .filter-btn.active {
-            background: #307e4a;
-            color: white;
-        }
-
-        .announcement-card {
-            background: white;
-            border-radius: 15px;
             overflow: hidden;
             transition: all 0.3s ease;
-            margin-bottom: 1.5rem;
-            border: 1px solid rgba(0, 0, 0, 0.08);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
 
-        .announcement-card:hover {
+        .featured-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
         }
 
-        .announcement-header {
-            padding: 1.5rem;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        .card-header {
+            padding: 2rem;
+            background: #307e4a;
+            color: white;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            gap: 1.5rem;
         }
 
-        .announcement-type {
-            display: inline-block;
-            padding: 0.25rem 1rem;
-            border-radius: 15px;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        .type-academic {
-            background: #e1f5fe;
-            color: #0288d1;
-        }
-
-        .type-admission {
-            background: #f3e5f5;
-            color: #7b1fa2;
-        }
-
-        .type-event {
-            background: #e8f5e9;
-            color: #2e7d32;
-        }
-
-        .type-important {
-            background: #ffebee;
-            color: #c62828;
-        }
-
-        .announcement-date {
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        .announcement-content {
-            padding: 1.5rem;
-        }
-
-        .announcement-title {
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
-            color: #333;
-        }
-
-        .announcement-text {
-            color: #666;
-            margin-bottom: 1rem;
-        }
-
-        .announcement-footer {
-            padding: 1rem 1.5rem;
-            background: #f8f9fa;
+        .header-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
         }
 
-        .read-more {
+        .header-title {
+            font-size: 2rem;
+            margin: 0;
+        }
+
+        .card-body {
+            padding: 2rem;
+        }
+
+        .card-text {
+            color: #444;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .objectives-section {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .section-title {
+            color: #1a1a1a;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-title i {
             color: #307e4a;
-            text-decoration: none;
-            font-weight: 500;
+        }
+
+        .objectives-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .objective-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            border-left: 4px solid #307e4a;
+        }
+
+        .objective-card:hover {
+            transform: translateX(5px);
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .objective-title {
+            color: #1a1a1a;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
 
-        .read-more:hover {
-            color: #22563c;
+        .value-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
         }
 
-        .announcement-meta {
-            display: flex;
-            gap: 1rem;
-            color: #666;
-            font-size: 0.9rem;
+        .value-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
 
-        .meta-item {
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .value-icon {
+            width: 70px;
+            height: 70px;
+            background: #f8f9fa;
+            border-radius: 50%;
             display: flex;
             align-items: center;
-            gap: 0.25rem;
-        }
-
-        .search-box {
-            position: relative;
-            margin-bottom: 2rem;
-        }
-
-        .search-box input {
-            width: 100%;
-            padding: 1rem 1.5rem;
-            border-radius: 25px;
-            border: 2px solid #ddd;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: #307e4a;
             transition: all 0.3s ease;
         }
 
-        .search-box input:focus {
-            border-color: #307e4a;
-            box-shadow: 0 0 0 0.2rem rgba(48, 126, 74, 0.25);
-            outline: none;
+        .value-card:hover .value-icon {
+            background: #307e4a;
+            color: white;
         }
 
-        .search-icon {
+        .value-title {
+            color: #1a1a1a;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .quote-section {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 3rem;
+        }
+
+        .quote-icon {
+            font-size: 8rem;
             position: absolute;
-            right: 1.5rem;
-            top: 50%;
-            transform: translateY(-50%);
+            opacity: 0.1;
+            color: #307e4a;
+            top: -1rem;
+            left: -1rem;
+        }
+
+        .quote-text {
+            font-size: 1.5rem;
+            color: #1a1a1a;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .quote-author {
             color: #666;
+            font-size: 1.1rem;
         }
     </style>
 </head>
@@ -367,6 +407,8 @@
         </div>
     </nav>
 
+    <!-- Hero Section -->
+
     <nav class="custom-breadcrumb" aria-label="breadcrumb">
         <div class="container">
             <ol class="breadcrumb-list">
@@ -374,160 +416,132 @@
                     <a href="index2.html"><i class="fas fa-home"></i></a>
                 </li>
                 <li class="breadcrumb-item">
-                    <a href="#">News and Event</a>
+                    <a href="#">About</a>
                 </li>
-                <li class="breadcrumb-item active">
-                    <a href="#">Announcement</a>
+                <li class="breadcrumb-item">
+                    <a href="mission-vision.html">Mission And Vision</a>
                 </li>
             </ol>
         </div>
     </nav>
 
     <div class="my-5">
-        <section class="announcements-section">
+        <section class="mission-vision-page">
             <div class="container">
-                <div class="section-title">
-                    <h2>Announcements</h2>
-                    <p>Stay updated with the latest announcements from Nextgen University</p>
+                <div class="page-header">
+                    <h1 class="page-title">Mission & Vision</h1>
+                    <p class="page-subtitle">Shaping tomorrow's leaders through innovation, excellence, and commitment</p>
                 </div>
-
-                <!-- Search Box -->
-                <div class="search-box">
-                    <input type="text" placeholder="Search announcements...">
-                    <i class="fas fa-search search-icon"></i>
+    
+                <div class="vision-mission-grid">
+                    <!-- Vision Card -->
+                    <div class="featured-card">
+                        <div class="card-header">
+                            <div class="header-icon">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                            <h2 class="header-title">Our Vision</h2>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                            <p class="card-text">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                        </div>
+                    </div>
+    
+                    <!-- Mission Card -->
+                    <div class="featured-card">
+                        <div class="card-header" style="background: #1a1a1a;">
+                            <div class="header-icon">
+                                <i class="fas fa-bullseye"></i>
+                            </div>
+                            <h2 class="header-title">Our Mission</h2>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                            <p class="card-text">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        </div>
+                    </div>
                 </div>
-
-                <!-- Filter Bar -->
-                <div class="filter-bar text-center">
-                    <button class="filter-btn active">All</button>
-                    <button class="filter-btn">Academic</button>
-                    <button class="filter-btn">Admission</button>
-                    <button class="filter-btn">Events</button>
-                    <button class="filter-btn">Important</button>
+    
+                <!-- Strategic Objectives Section -->
+                <div class="objectives-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-chart-line"></i>
+                        Strategic Objectives
+                    </h2>
+                    <div class="objectives-grid">
+                        <div class="objective-card">
+                            <h3 class="objective-title">
+                                <i class="fas fa-graduation-cap"></i>
+                                Academic Excellence
+                            </h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</p>
+                        </div>
+                        <div class="objective-card">
+                            <h3 class="objective-title">
+                                <i class="fas fa-flask"></i>
+                                Research Innovation
+                            </h3>
+                            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
+                        </div>
+                        <div class="objective-card">
+                            <h3 class="objective-title">
+                                <i class="fas fa-users"></i>
+                                Global Community
+                            </h3>
+                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla.</p>
+                        </div>
+                    </div>
                 </div>
-
-                <!-- Announcements Grid -->
-                <div class="row">
-                    <!-- Important Announcement -->
-                    <div class="col-lg-6">
-                        <div class="announcement-card">
-                            <div class="announcement-header">
-                                <span class="announcement-type type-important">Important</span>
-                                <span class="announcement-date">October 5, 2024</span>
+    
+                <!-- Core Values Section -->
+                <div class="objectives-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-heart"></i>
+                        Our Core Values
+                    </h2>
+                    <div class="value-cards">
+                        <div class="value-card">
+                            <div class="value-icon">
+                                <i class="fas fa-star"></i>
                             </div>
-                            <div class="announcement-content">
-                                <h3 class="announcement-title">Fall 2024 Semester Registration Deadline</h3>
-                                <p class="announcement-text">All students must complete their course registration for
-                                    Fall 2024 semester by October 15, 2024. Late registration will incur additional
-                                    fees.</p>
+                            <h3 class="value-title">Excellence</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+                        <div class="value-card">
+                            <div class="value-icon">
+                                <i class="fas fa-lightbulb"></i>
                             </div>
-                            <div class="announcement-footer">
-                                <a href="announcement-details.html" class="read-more">
-                                    Read More
-                                    <i class="fas fa-arrow-right"></i>
-                                </a>
-                                <div class="announcement-meta">
-                                    <span class="meta-item">
-                                        <i class="fas fa-eye"></i> 1,245
-                                    </span>
-                                    <span class="meta-item">
-                                        <i class="fas fa-download"></i> 85
-                                    </span>
-                                </div>
+                            <h3 class="value-title">Innovation</h3>
+                            <p>Ut enim ad minim veniam, quis nostrud exercitation.</p>
+                        </div>
+                        <div class="value-card">
+                            <div class="value-icon">
+                                <i class="fas fa-hands-helping"></i>
                             </div>
+                            <h3 class="value-title">Integrity</h3>
+                            <p>Duis aute irure dolor in reprehenderit in voluptate.</p>
+                        </div>
+                        <div class="value-card">
+                            <div class="value-icon">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <h3 class="value-title">Diversity</h3>
+                            <p>Excepteur sint occaecat cupidatat non proident.</p>
                         </div>
                     </div>
-
-                    <!-- Academic Announcement -->
-                    <div class="col-lg-6">
-                        <div class="announcement-card">
-                            <div class="announcement-header">
-                                <span class="announcement-type type-academic">Academic</span>
-                                <span class="announcement-date">October 4, 2024</span>
-                            </div>
-                            <div class="announcement-content">
-                                <h3 class="announcement-title">New Research Collaboration with MIT</h3>
-                                <p class="announcement-text">We're excited to announce a new research partnership with
-                                    MIT in the field of Artificial Intelligence and Machine Learning.</p>
-                            </div>
-                            <div class="announcement-footer">
-                                <a href="announcement-details.html" class="read-more">
-                                    Read More
-                                    <i class="fas fa-arrow-right"></i>
-                                </a>
-                                <div class="announcement-meta">
-                                    <span class="meta-item">
-                                        <i class="fas fa-eye"></i> 892
-                                    </span>
-                                    <span class="meta-item">
-                                        <i class="fas fa-download"></i> 43
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Admission Announcement -->
-                    <div class="col-lg-6">
-                        <div class="announcement-card">
-                            <div class="announcement-header">
-                                <span class="announcement-type type-admission">Admission</span>
-                                <span class="announcement-date">October 3, 2024</span>
-                            </div>
-                            <div class="announcement-content">
-                                <h3 class="announcement-title">Spring 2025 Admission Schedule</h3>
-                                <p class="announcement-text">The admission schedule for Spring 2025 semester has been
-                                    published. Early application deadline is November 30, 2024.</p>
-                            </div>
-                            <div class="announcement-footer">
-                                <a href="#" class="read-more">
-                                    Read More
-                                    <i class="fas fa-arrow-right"></i>
-                                </a>
-                                <div class="announcement-meta">
-                                    <span class="meta-item">
-                                        <i class="fas fa-eye"></i> 1,567
-                                    </span>
-                                    <span class="meta-item">
-                                        <i class="fas fa-download"></i> 234
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Event Announcement -->
-                    <div class="col-lg-6">
-                        <div class="announcement-card">
-                            <div class="announcement-header">
-                                <span class="announcement-type type-event">Event</span>
-                                <span class="announcement-date">October 2, 2024</span>
-                            </div>
-                            <div class="announcement-content">
-                                <h3 class="announcement-title">Annual Tech Fest 2024</h3>
-                                <p class="announcement-text">Join us for the biggest technology festival of the year.
-                                    Featuring workshops, hackathons, and guest speakers from leading tech companies.</p>
-                            </div>
-                            <div class="announcement-footer">
-                                <a href="#" class="read-more">
-                                    Read More
-                                    <i class="fas fa-arrow-right"></i>
-                                </a>
-                                <div class="announcement-meta">
-                                    <span class="meta-item">
-                                        <i class="fas fa-eye"></i> 978
-                                    </span>
-                                    <span class="meta-item">
-                                        <i class="fas fa-download"></i> 112
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                </div>
+    
+                <!-- Quote Section -->
+                <div class="quote-section">
+                    <i class="fas fa-quote-left quote-icon"></i>
+                    <p class="quote-text">"Education is not the filling of a pail, but the lighting of a fire."</p>
+                    <p class="quote-author">- William Butler Yeats</p>
                 </div>
             </div>
         </section>
     </div>
+    
 
     <footer class="footer">
         <div class="container">
@@ -608,104 +622,6 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // DOM Elements
-            const searchInput = document.querySelector('.search-box input');
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            const announcements = document.querySelectorAll('.announcement-card');
-
-            // Search functionality
-            searchInput.addEventListener('input', function (e) {
-                const searchTerm = e.target.value.toLowerCase();
-
-                announcements.forEach(announcement => {
-                    const title = announcement.querySelector('.announcement-title').textContent.toLowerCase();
-                    const content = announcement.querySelector('.announcement-text').textContent.toLowerCase();
-
-                    if (title.includes(searchTerm) || content.includes(searchTerm)) {
-                        announcement.style.display = '';
-                    } else {
-                        announcement.style.display = 'none';
-                    }
-                });
-            });
-
-            // Filter functionality
-            filterButtons.forEach(button => {
-                button.addEventListener('click', function () {
-                    // Remove active class from all buttons
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                    // Add active class to clicked button
-                    this.classList.add('active');
-
-                    const filterType = this.textContent.toLowerCase();
-
-                    announcements.forEach(announcement => {
-                        if (filterType === 'all') {
-                            announcement.style.display = '';
-                            return;
-                        }
-
-                        const announcementType = announcement
-                            .querySelector('.announcement-type')
-                            .textContent
-                            .toLowerCase();
-
-                        if (announcementType === filterType) {
-                            announcement.style.display = '';
-                        } else {
-                            announcement.style.display = 'none';
-                        }
-                    });
-                });
-            });
-
-            // Read More functionality
-            // const readMoreLinks = document.querySelectorAll('.read-more');
-            // readMoreLinks.forEach(link => {
-            //     link.addEventListener('click', function(e) {
-            //         e.preventDefault();
-            //         const card = this.closest('.announcement-card');
-            //         const title = card.querySelector('.announcement-title').textContent;
-            //         // You can implement your own logic here for handling "Read More" clicks
-            //         console.log(`Reading more about: ${title}`);
-            //     });
-            // });
-
-            // Animation on scroll
-            function handleScroll() {
-                announcements.forEach(announcement => {
-                    const rect = announcement.getBoundingClientRect();
-                    const isVisible = rect.top <= window.innerHeight && rect.bottom >= 0;
-
-                    if (isVisible) {
-                        announcement.style.opacity = '1';
-                        announcement.style.transform = 'translateY(0)';
-                    }
-                });
-            }
-
-            // Initial setup for animations
-            announcements.forEach(announcement => {
-                announcement.style.opacity = '0';
-                announcement.style.transform = 'translateY(20px)';
-                announcement.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-            });
-
-            // Add scroll listener
-            window.addEventListener('scroll', handleScroll);
-            // Initial check for visible elements
-            handleScroll();
-
-            // Update view count on read more click (demo purposes)
-            function updateViewCount(metaElement) {
-                const viewCount = metaElement.querySelector('.fa-eye').parentElement;
-                const currentCount = parseInt(viewCount.textContent);
-                viewCount.textContent = ` ${currentCount + 1}`;
-            }
-        });
-    </script>
 </body>
 
 </html>

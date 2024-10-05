@@ -11,182 +11,270 @@
     <link rel="stylesheet" href="asset/breadcrumb.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
-        .announcements-section {
+        .application-page {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             padding: 4rem 0;
-            background: linear-gradient(to bottom, #f8f9fa, #ffffff);
+            min-height: 100vh;
         }
 
-        .section-title {
+        .page-header {
             text-align: center;
             margin-bottom: 3rem;
         }
 
-        .section-title h2 {
-            color: #307e4a;
+        .page-title {
+            color: #1a1a1a;
             font-size: 2.5rem;
+            font-weight: 700;
             margin-bottom: 1rem;
         }
 
-        .section-title p {
+        .page-subtitle {
             color: #666;
             max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .application-deadline {
+            background: #ffebee;
+            color: #c62828;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+        }
+
+        .steps-container {
+            max-width: 1000px;
             margin: 0 auto;
         }
 
-        .filter-bar {
-            background: white;
-            padding: 1rem;
-            border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            margin-bottom: 2rem;
+        .step-progress {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 3rem;
+            position: relative;
+            padding: 0 2rem;
         }
 
-        .filter-btn {
-            padding: 0.5rem 1.5rem;
-            border-radius: 20px;
-            border: 2px solid #307e4a;
-            background: transparent;
-            color: #307e4a;
-            margin: 0.25rem;
+        .step-progress::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #e9ecef;
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+
+        .progress-step {
+            position: relative;
+            z-index: 2;
+            background: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: #666;
+            border: 2px solid #e9ecef;
             transition: all 0.3s ease;
         }
 
-        .filter-btn:hover,
-        .filter-btn.active {
+        .progress-step.active {
             background: #307e4a;
             color: white;
+            border-color: #307e4a;
         }
 
-        .announcement-card {
+        .progress-step.completed {
+            background: #307e4a;
+            color: white;
+            border-color: #307e4a;
+        }
+
+        .application-card {
             background: white;
-            border-radius: 15px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
             overflow: hidden;
+        }
+
+        .card-header {
+            background: #307e4a;
+            color: white;
+            padding: 1.5rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .header-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-body {
+            padding: 2rem;
+        }
+
+        .requirements-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .requirement-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem;
+            border-bottom: 1px solid #f0f0f0;
             transition: all 0.3s ease;
-            margin-bottom: 1.5rem;
-            border: 1px solid rgba(0, 0, 0, 0.08);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
 
-        .announcement-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+        .requirement-item:last-child {
+            border-bottom: none;
         }
 
-        .announcement-header {
-            padding: 1.5rem;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .announcement-type {
-            display: inline-block;
-            padding: 0.25rem 1rem;
-            border-radius: 15px;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        .type-academic {
-            background: #e1f5fe;
-            color: #0288d1;
-        }
-
-        .type-admission {
-            background: #f3e5f5;
-            color: #7b1fa2;
-        }
-
-        .type-event {
-            background: #e8f5e9;
-            color: #2e7d32;
-        }
-
-        .type-important {
-            background: #ffebee;
-            color: #c62828;
-        }
-
-        .announcement-date {
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        .announcement-content {
-            padding: 1.5rem;
-        }
-
-        .announcement-title {
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
-            color: #333;
-        }
-
-        .announcement-text {
-            color: #666;
-            margin-bottom: 1rem;
-        }
-
-        .announcement-footer {
-            padding: 1rem 1.5rem;
+        .requirement-item:hover {
             background: #f8f9fa;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
         }
 
-        .read-more {
+        .requirement-icon {
             color: #307e4a;
-            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        .requirement-content h4 {
+            color: #1a1a1a;
+            margin: 0 0 0.5rem 0;
+        }
+
+        .requirement-content p {
+            color: #666;
+            margin: 0;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
             font-weight: 500;
-            display: flex;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: #307e4a;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(48,126,74,0.1);
+        }
+
+        .btn {
+            padding: 0.75rem 2rem;
+            border-radius: 10px;
+            border: none;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
             align-items: center;
             gap: 0.5rem;
         }
 
-        .read-more:hover {
-            color: #22563c;
+        .btn-primary {
+            background: #307e4a;
+            color: white;
         }
 
-        .announcement-meta {
-            display: flex;
-            gap: 1rem;
-            color: #666;
-            font-size: 0.9rem;
+        .btn-primary:hover {
+            background: #266940;
         }
 
-        .meta-item {
-            display: flex;
-            align-items: center;
-            gap: 0.25rem;
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #307e4a;
+            color: #307e4a;
         }
 
-        .search-box {
-            position: relative;
-            margin-bottom: 2rem;
+        .btn-outline:hover {
+            background: #307e4a;
+            color: white;
         }
 
-        .search-box input {
-            width: 100%;
-            padding: 1rem 1.5rem;
-            border-radius: 25px;
-            border: 2px solid #ddd;
+        .fee-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .fee-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
             transition: all 0.3s ease;
         }
 
-        .search-box input:focus {
-            border-color: #307e4a;
-            box-shadow: 0 0 0 0.2rem rgba(48, 126, 74, 0.25);
-            outline: none;
+        .fee-card:hover {
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
-        .search-icon {
-            position: absolute;
-            right: 1.5rem;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #666;
+        .fee-amount {
+            font-size: 2rem;
+            color: #307e4a;
+            font-weight: 700;
+            margin: 1rem 0;
+        }
+
+        .help-section {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .help-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .fee-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .help-buttons {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
@@ -367,6 +455,8 @@
         </div>
     </nav>
 
+    <!-- Hero Section -->
+
     <nav class="custom-breadcrumb" aria-label="breadcrumb">
         <div class="container">
             <ol class="breadcrumb-list">
@@ -374,160 +464,168 @@
                     <a href="index2.html"><i class="fas fa-home"></i></a>
                 </li>
                 <li class="breadcrumb-item">
-                    <a href="#">News and Event</a>
+                    <a href="#">Application</a>
                 </li>
                 <li class="breadcrumb-item active">
-                    <a href="#">Announcement</a>
+                    <a href="#">Apply</a>
                 </li>
             </ol>
         </div>
     </nav>
 
     <div class="my-5">
-        <section class="announcements-section">
+        <section class="application-page">
             <div class="container">
-                <div class="section-title">
-                    <h2>Announcements</h2>
-                    <p>Stay updated with the latest announcements from Nextgen University</p>
+                <div class="page-header">
+                    <h1 class="page-title">Online Application</h1>
+                    <p class="page-subtitle">Start your journey with Nextgen University. Complete the application form below to begin your admission process.</p>
+                    <div class="application-deadline">
+                        <i class="fas fa-clock"></i>
+                        Application Deadline: October 15, 2024
+                    </div>
                 </div>
-
-                <!-- Search Box -->
-                <div class="search-box">
-                    <input type="text" placeholder="Search announcements...">
-                    <i class="fas fa-search search-icon"></i>
-                </div>
-
-                <!-- Filter Bar -->
-                <div class="filter-bar text-center">
-                    <button class="filter-btn active">All</button>
-                    <button class="filter-btn">Academic</button>
-                    <button class="filter-btn">Admission</button>
-                    <button class="filter-btn">Events</button>
-                    <button class="filter-btn">Important</button>
-                </div>
-
-                <!-- Announcements Grid -->
-                <div class="row">
-                    <!-- Important Announcement -->
-                    <div class="col-lg-6">
-                        <div class="announcement-card">
-                            <div class="announcement-header">
-                                <span class="announcement-type type-important">Important</span>
-                                <span class="announcement-date">October 5, 2024</span>
+    
+                <div class="steps-container">
+                    <!-- Progress Steps -->
+                    <div class="step-progress">
+                        <div class="progress-step active">1</div>
+                        <div class="progress-step">2</div>
+                        <div class="progress-step">3</div>
+                        <div class="progress-step">4</div>
+                    </div>
+    
+                    <!-- Requirements Card -->
+                    <div class="application-card">
+                        <div class="card-header">
+                            <div class="header-icon">
+                                <i class="fas fa-list-check"></i>
                             </div>
-                            <div class="announcement-content">
-                                <h3 class="announcement-title">Fall 2024 Semester Registration Deadline</h3>
-                                <p class="announcement-text">All students must complete their course registration for
-                                    Fall 2024 semester by October 15, 2024. Late registration will incur additional
-                                    fees.</p>
+                            <h2>Application Requirements</h2>
+                        </div>
+                        <div class="card-body">
+                            <ul class="requirements-list">
+                                <li class="requirement-item">
+                                    <i class="fas fa-check-circle requirement-icon"></i>
+                                    <div class="requirement-content">
+                                        <h4>Academic Transcripts</h4>
+                                        <p>Official transcripts from all previously attended institutions</p>
+                                    </div>
+                                </li>
+                                <li class="requirement-item">
+                                    <i class="fas fa-check-circle requirement-icon"></i>
+                                    <div class="requirement-content">
+                                        <h4>Standardized Test Scores</h4>
+                                        <p>SAT/ACT scores for undergraduate applications</p>
+                                    </div>
+                                </li>
+                                <li class="requirement-item">
+                                    <i class="fas fa-check-circle requirement-icon"></i>
+                                    <div class="requirement-content">
+                                        <h4>Letters of Recommendation</h4>
+                                        <p>Two letters of recommendation from academic references</p>
+                                    </div>
+                                </li>
+                                <li class="requirement-item">
+                                    <i class="fas fa-check-circle requirement-icon"></i>
+                                    <div class="requirement-content">
+                                        <h4>Personal Statement</h4>
+                                        <p>Essay describing your academic goals and interests</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+    
+                    <!-- Application Form -->
+                    <div class="application-card">
+                        <div class="card-header">
+                            <div class="header-icon">
+                                <i class="fas fa-user"></i>
                             </div>
-                            <div class="announcement-footer">
-                                <a href="announcement-details.html" class="read-more">
-                                    Read More
-                                    <i class="fas fa-arrow-right"></i>
-                                </a>
-                                <div class="announcement-meta">
-                                    <span class="meta-item">
-                                        <i class="fas fa-eye"></i> 1,245
-                                    </span>
-                                    <span class="meta-item">
-                                        <i class="fas fa-download"></i> 85
-                                    </span>
+                            <h2>Personal Information</h2>
+                        </div>
+                        <div class="card-body">
+                            <form>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label">First Name</label>
+                                            <input type="text" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-label">Last Name</label>
+                                            <input type="text" class="form-control" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Program of Interest</label>
+                                    <select class="form-control" required>
+                                        <option value="">Select a program</option>
+                                        <option>Computer Science</option>
+                                        <option>Business Administration</option>
+                                        <option>Engineering</option>
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+    
+                    <!-- Application Fees -->
+                    <div class="application-card">
+                        <div class="card-header">
+                            <div class="header-icon">
+                                <i class="fas fa-dollar-sign"></i>
+                            </div>
+                            <h2>Application Fees</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="fee-cards">
+                                <div class="fee-card">
+                                    <h3>Undergraduate</h3>
+                                    <div class="fee-amount">$75</div>
+                                    <p>For all undergraduate programs</p>
+                                </div>
+                                <div class="fee-card">
+                                    <h3>Graduate</h3>
+                                    <div class="fee-amount">$90</div>
+                                    <p>For all graduate programs</p>
+                                </div>
+                                <div class="fee-card">
+                                    <h3>International</h3>
+                                    <div class="fee-amount">$120</div>
+                                    <p>For international students</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Academic Announcement -->
-                    <div class="col-lg-6">
-                        <div class="announcement-card">
-                            <div class="announcement-header">
-                                <span class="announcement-type type-academic">Academic</span>
-                                <span class="announcement-date">October 4, 2024</span>
-                            </div>
-                            <div class="announcement-content">
-                                <h3 class="announcement-title">New Research Collaboration with MIT</h3>
-                                <p class="announcement-text">We're excited to announce a new research partnership with
-                                    MIT in the field of Artificial Intelligence and Machine Learning.</p>
-                            </div>
-                            <div class="announcement-footer">
-                                <a href="announcement-details.html" class="read-more">
-                                    Read More
-                                    <i class="fas fa-arrow-right"></i>
-                                </a>
-                                <div class="announcement-meta">
-                                    <span class="meta-item">
-                                        <i class="fas fa-eye"></i> 892
-                                    </span>
-                                    <span class="meta-item">
-                                        <i class="fas fa-download"></i> 43
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Admission Announcement -->
-                    <div class="col-lg-6">
-                        <div class="announcement-card">
-                            <div class="announcement-header">
-                                <span class="announcement-type type-admission">Admission</span>
-                                <span class="announcement-date">October 3, 2024</span>
-                            </div>
-                            <div class="announcement-content">
-                                <h3 class="announcement-title">Spring 2025 Admission Schedule</h3>
-                                <p class="announcement-text">The admission schedule for Spring 2025 semester has been
-                                    published. Early application deadline is November 30, 2024.</p>
-                            </div>
-                            <div class="announcement-footer">
-                                <a href="#" class="read-more">
-                                    Read More
-                                    <i class="fas fa-arrow-right"></i>
-                                </a>
-                                <div class="announcement-meta">
-                                    <span class="meta-item">
-                                        <i class="fas fa-eye"></i> 1,567
-                                    </span>
-                                    <span class="meta-item">
-                                        <i class="fas fa-download"></i> 234
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Event Announcement -->
-                    <div class="col-lg-6">
-                        <div class="announcement-card">
-                            <div class="announcement-header">
-                                <span class="announcement-type type-event">Event</span>
-                                <span class="announcement-date">October 2, 2024</span>
-                            </div>
-                            <div class="announcement-content">
-                                <h3 class="announcement-title">Annual Tech Fest 2024</h3>
-                                <p class="announcement-text">Join us for the biggest technology festival of the year.
-                                    Featuring workshops, hackathons, and guest speakers from leading tech companies.</p>
-                            </div>
-                            <div class="announcement-footer">
-                                <a href="#" class="read-more">
-                                    Read More
-                                    <i class="fas fa-arrow-right"></i>
-                                </a>
-                                <div class="announcement-meta">
-                                    <span class="meta-item">
-                                        <i class="fas fa-eye"></i> 978
-                                    </span>
-                                    <span class="meta-item">
-                                        <i class="fas fa-download"></i> 112
-                                    </span>
-                                </div>
-                            </div>
+    
+                    <!-- Help Section -->
+                    <div class="help-section">
+                        <h3>Need Help?</h3>
+                        <p>Our admission counselors are here to help you with your application process</p>
+                        <div class="help-buttons">
+                            <button class="btn btn-primary">
+                                <i class="fas fa-phone"></i>
+                                Contact Support
+                            </button>
+                            <button class="btn btn-outline">
+                                <i class="fas fa-message"></i>
+                                Live Chat
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
     </div>
+    
 
     <footer class="footer">
         <div class="container">
@@ -608,104 +706,6 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // DOM Elements
-            const searchInput = document.querySelector('.search-box input');
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            const announcements = document.querySelectorAll('.announcement-card');
-
-            // Search functionality
-            searchInput.addEventListener('input', function (e) {
-                const searchTerm = e.target.value.toLowerCase();
-
-                announcements.forEach(announcement => {
-                    const title = announcement.querySelector('.announcement-title').textContent.toLowerCase();
-                    const content = announcement.querySelector('.announcement-text').textContent.toLowerCase();
-
-                    if (title.includes(searchTerm) || content.includes(searchTerm)) {
-                        announcement.style.display = '';
-                    } else {
-                        announcement.style.display = 'none';
-                    }
-                });
-            });
-
-            // Filter functionality
-            filterButtons.forEach(button => {
-                button.addEventListener('click', function () {
-                    // Remove active class from all buttons
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                    // Add active class to clicked button
-                    this.classList.add('active');
-
-                    const filterType = this.textContent.toLowerCase();
-
-                    announcements.forEach(announcement => {
-                        if (filterType === 'all') {
-                            announcement.style.display = '';
-                            return;
-                        }
-
-                        const announcementType = announcement
-                            .querySelector('.announcement-type')
-                            .textContent
-                            .toLowerCase();
-
-                        if (announcementType === filterType) {
-                            announcement.style.display = '';
-                        } else {
-                            announcement.style.display = 'none';
-                        }
-                    });
-                });
-            });
-
-            // Read More functionality
-            // const readMoreLinks = document.querySelectorAll('.read-more');
-            // readMoreLinks.forEach(link => {
-            //     link.addEventListener('click', function(e) {
-            //         e.preventDefault();
-            //         const card = this.closest('.announcement-card');
-            //         const title = card.querySelector('.announcement-title').textContent;
-            //         // You can implement your own logic here for handling "Read More" clicks
-            //         console.log(`Reading more about: ${title}`);
-            //     });
-            // });
-
-            // Animation on scroll
-            function handleScroll() {
-                announcements.forEach(announcement => {
-                    const rect = announcement.getBoundingClientRect();
-                    const isVisible = rect.top <= window.innerHeight && rect.bottom >= 0;
-
-                    if (isVisible) {
-                        announcement.style.opacity = '1';
-                        announcement.style.transform = 'translateY(0)';
-                    }
-                });
-            }
-
-            // Initial setup for animations
-            announcements.forEach(announcement => {
-                announcement.style.opacity = '0';
-                announcement.style.transform = 'translateY(20px)';
-                announcement.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-            });
-
-            // Add scroll listener
-            window.addEventListener('scroll', handleScroll);
-            // Initial check for visible elements
-            handleScroll();
-
-            // Update view count on read more click (demo purposes)
-            function updateViewCount(metaElement) {
-                const viewCount = metaElement.querySelector('.fa-eye').parentElement;
-                const currentCount = parseInt(viewCount.textContent);
-                viewCount.textContent = ` ${currentCount + 1}`;
-            }
-        });
-    </script>
 </body>
 
 </html>
