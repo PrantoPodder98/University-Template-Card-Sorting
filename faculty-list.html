@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nextgen Content Explorer</title>
+    <title>Nextgen University</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="asset/style.css">
@@ -42,9 +42,12 @@
 
         .faculty-card .faculty-img {
             height: 250px;
-    width: 100%; /* Ensure the image takes up the full width of its container */
-    object-fit: cover; /* Maintain aspect ratio while filling the container */
-    display: block; /* Prevent extra spacing from inline elements */
+            width: 100%;
+            /* Ensure the image takes up the full width of its container */
+            object-fit: cover;
+            /* Maintain aspect ratio while filling the container */
+            display: block;
+            /* Prevent extra spacing from inline elements */
         }
 
         .expertise-tag {
@@ -66,8 +69,6 @@
         .social-links a:hover {
             color: #22B369;
         }
-
-        
     </style>
 </head>
 
@@ -299,9 +300,8 @@
             <button class="faculty-filter-btn" data-filter="shls">SHLS</button>
         </div>
 
-        <!-- Faculty Cards Grid -->
-        <div class="row" id="facultyGrid">
-            <!-- SOBE Faculty -->
+        
+        <!-- <div class="row" id="facultyGrid">
             <div class="col-lg-4 col-md-6 faculty-item" data-department="sobe">
                 <div class="card faculty-card">
                     <a href="faculty-details.html" class="no-underline">
@@ -326,7 +326,6 @@
                 </div>
             </div>
 
-            <!-- SEPS Faculty -->
             <div class="col-lg-4 col-md-6 faculty-item" data-department="seps">
                 <div class="card faculty-card">
                     <img src="https://images.unsplash.com/photo-1615109398623-88346a601842?w=800&q=80"
@@ -371,7 +370,6 @@
                 </div>
             </div>
 
-            <!-- Faculty 4 -->
             <div class="col-lg-4 col-md-6 faculty-item" data-department="seps">
                 <div class="card faculty-card">
                     <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=800&q=80"
@@ -394,7 +392,6 @@
                 </div>
             </div>
 
-            <!-- Faculty 5 -->
             <div class="col-lg-4 col-md-6 faculty-item" data-department="sohs">
                 <div class="card faculty-card">
                     <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800&q=80" class="faculty-img"
@@ -417,7 +414,6 @@
                 </div>
             </div>
 
-            <!-- Faculty 6 -->
             <div class="col-lg-4 col-md-6 faculty-item" data-department="seps">
                 <div class="card faculty-card">
                     <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800&q=80"
@@ -440,7 +436,7 @@
                 </div>
             </div>
 
-            <!-- Faculty 7 -->
+
             <div class="col-lg-4 col-md-6 faculty-item" data-department="sobe">
                 <div class="card faculty-card">
                     <img src="https://images.unsplash.com/photo-1573497491208-6b1acb260507?w=800&q=80"
@@ -463,7 +459,6 @@
                 </div>
             </div>
 
-            <!-- Faculty 8 -->
             <div class="col-lg-4 col-md-6 faculty-item" data-department="shls">
                 <div class="card faculty-card">
                     <img src="https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?w=800&q=80"
@@ -486,7 +481,6 @@
                 </div>
             </div>
 
-            <!-- Faculty 9 -->
             <div class="col-lg-4 col-md-6 faculty-item" data-department="shls">
                 <div class="card faculty-card">
                     <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800&q=80"
@@ -508,9 +502,11 @@
                     </div>
                 </div>
             </div>
+        </div> -->
 
-            <!-- Add similar cards for other faculty members -->
-
+        <!-- Faculty Cards Grid -->
+        <div class="row" id="facultyGrid">
+            <!-- Faculty cards will be dynamically inserted here -->
         </div>
     </div>
 
@@ -593,6 +589,8 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="asset/js/faculty-data.js"></script>
+    <script src="asset/js/faculty-grid.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             // Filter functionality

@@ -4,125 +4,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nextgen University</title>
+    <title>Nextgen Content Explorer</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="asset/style.css">
     <link rel="stylesheet" href="asset/breadcrumb.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
-    <style>
-        .profile-section {
-            padding: 40px 0;
+<style>
+    .announcements-section {
+            padding: 4rem 0;
+            background: linear-gradient(to bottom, #f8f9fa, #ffffff);
         }
 
-        .profile-header {
-            background: linear-gradient(to right, #307e4a, #22B369);
-            border-radius: 15px;
-            padding: 40px;
-            color: white;
-            margin-bottom: 30px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
         }
 
-        .profile-image {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            border: 5px solid rgba(255, 255, 255, 0.3);
-            object-fit: cover;
+        .section-title h2 {
+            color: #307e4a;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
         }
 
-        .contact-info2 {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 15px;
-            border-radius: 10px;
-            backdrop-filter: blur(5px);
+        .section-title p {
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
-        .contact-info2 i {
-            width: 20px;
-            margin-right: 10px;
-        }
-
-        .profile-card {
+        .filter-bar {
             background: white;
+            padding: 1rem;
             border-radius: 15px;
-            padding: 25px;
-            margin-bottom: 25px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
         }
 
-        .profile-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        .expertise-tag {
-            display: inline-block;
-            padding: 8px 15px;
-            margin: 5px;
+        .filter-btn {
+            padding: 0.5rem 1.5rem;
             border-radius: 20px;
-            background-color: #e9f7f0;
-            color: #22B369;
-            font-size: 0.9rem;
+            border: 2px solid #307e4a;
+            background: transparent;
+            color: #307e4a;
+            margin: 0.25rem;
             transition: all 0.3s ease;
         }
 
-        .expertise-tag:hover {
-            background-color: #22B369;
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #307e4a;
             color: white;
-            transform: scale(1.05);
         }
 
-        .publication-item {
-            padding: 15px;
-            border-left: 3px solid #22B369;
-            margin-bottom: 15px;
-            background: #f8f9fa;
-            border-radius: 0 10px 10px 0;
-            transition: all 0.3s ease;
-        }
-
-        .publication-item:hover {
-            background: #e9f7f0;
-            transform: translateX(5px);
-        }
-
-        .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            margin: 0 5px;
-            transition: all 0.3s ease;
-        }
-
-        .social-links a:hover {
+        .announcement-card {
             background: white;
-            color: #22B369;
-            transform: scale(1.1);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(0,0,0,0.08);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
 
-        .course-card {
-            border-left: 4px solid #22B369;
-            padding: 15px;
-            margin-bottom: 15px;
+        .announcement-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.1);
+        }
+
+        .announcement-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .announcement-type {
+            display: inline-block;
+            padding: 0.25rem 1rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .type-academic {
+            background: #e1f5fe;
+            color: #0288d1;
+        }
+
+        .type-admission {
+            background: #f3e5f5;
+            color: #7b1fa2;
+        }
+
+        .type-event {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .type-important {
+            background: #ffebee;
+            color: #c62828;
+        }
+
+        .announcement-date {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .announcement-content {
+            padding: 1.5rem;
+        }
+
+        .announcement-title {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .announcement-text {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .announcement-footer {
+            padding: 1rem 1.5rem;
             background: #f8f9fa;
-            border-radius: 0 10px 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .read-more {
+            color: #307e4a;
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .read-more:hover {
+            color: #22563c;
+        }
+
+        .announcement-meta {
+            display: flex;
+            gap: 1rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .search-box {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border-radius: 25px;
+            border: 2px solid #ddd;
             transition: all 0.3s ease;
         }
 
-        .course-card:hover {
-            background: #e9f7f0;
-            transform: translateX(5px);
+        .search-box input:focus {
+            border-color: #307e4a;
+            box-shadow: 0 0 0 0.2rem rgba(48,126,74,0.25);
+            outline: none;
         }
-    </style>
+
+        .search-icon {
+            position: absolute;
+            right: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+        }
+</style>
 </head>
 
 <body>
@@ -131,7 +197,7 @@
         <div class="container">
             <!-- <a class="navbar-brand" href="#">Nextgen</a> -->
             <h4>
-                <a class="navbar-brand text-light" href="index2.html">NEXTGEN</a>
+                <a class="navbar-brand text-light" href="#">NEXTGEN</a>
             </h4>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -201,7 +267,7 @@
                                     <a class="dropdown-item" href="#">Architecture</a>
                                     <a class="dropdown-item" href="#">Civil and Environmental Engineering</a>
                                     <a class="dropdown-item" href="#">Electrical Engineering</a>
-                                    <a class="dropdown-item" href="#">Computer Engineering</a>
+                                    <a class="dropdown-item" href="cse-department.html">Computer Engineering</a>
                                     <a class="dropdown-item" href="#">Mathematics and Physics</a>
                                 </div>
                                 <div class="col-md-3">
@@ -235,7 +301,8 @@
                                 <div class="col-md-3">
                                     <h5>School of Engineering and Physical Sciences (SEPS)</h5>
                                     <a class="dropdown-item" href="#">Architecture</a>
-                                    <a class="dropdown-item" href="#">Computer Science and Engineering (CSE)</a>
+                                    <a class="dropdown-item" href="faculty-list.html">Computer Science and Engineering
+                                        (CSE)</a>
                                     <a class="dropdown-item" href="#">Electrical and Electronic Engineering (EEE)</a>
                                     <a class="dropdown-item" href="#">Civil Engineering</a>
                                     <a class="dropdown-item" href="#">Mathematics</a>
@@ -300,8 +367,6 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-
     <nav class="custom-breadcrumb" aria-label="breadcrumb">
         <div class="container">
             <ol class="breadcrumb-list">
@@ -309,186 +374,154 @@
                     <a href="index2.html"><i class="fas fa-home"></i></a>
                 </li>
                 <li class="breadcrumb-item">
-                    <a href="#">Faculty</a>
-                </li>
-                <li class="breadcrumb-item">
-                    <a href="#">School of Engineering</a>
-                </li>
-                <li class="breadcrumb-item">
-                    <a href="cse-department.html">Computer Science and Engineering</a>
-                </li>
-                <li class="breadcrumb-item">
-                    <a href="faculty-list.html">Faculty</a>
+                    <a href="#">News and Event</a>
                 </li>
                 <li class="breadcrumb-item active">
-                    <a href="#">Name</a>
+                    <a href="#">Announcement</a>
                 </li>
             </ol>
         </div>
     </nav>
 
-    <!-- <div class="container profile-section">
-        <div class="profile-header">
-            <div class="row align-items-center">
-                <div class="col-md-3 text-center">
-                    <img src="https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?w=800&q=80"
-                        alt="Dr. Sarah Johnson" class="profile-image mb-3">
+    <div class="my-5">
+        <section class="announcements-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Announcements</h2>
+                    <p>Stay updated with the latest announcements from Nextgen University</p>
                 </div>
-                <div class="col-md-6">
-                    <h2>Dr. Sarah Johnson</h2>
-                    <p class="lead mb-2">Professor of Computer Science</p>
-                    <p class="mb-3">School of Engineering and Physical Sciences</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fas fa-envelope"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-google"></i></a>
-                        <a href="#"><i class="fab fa-researchgate"></i></a>
-                        <a href="#"><i class="fas fa-globe"></i></a>
+    
+                <!-- Search Box -->
+                <div class="search-box">
+                    <input type="text" placeholder="Search announcements...">
+                    <i class="fas fa-search search-icon"></i>
+                </div>
+    
+                <!-- Filter Bar -->
+                <div class="filter-bar text-center">
+                    <button class="filter-btn active">All</button>
+                    <button class="filter-btn">Academic</button>
+                    <button class="filter-btn">Admission</button>
+                    <button class="filter-btn">Events</button>
+                    <button class="filter-btn">Important</button>
+                </div>
+    
+                <!-- Announcements Grid -->
+                <div class="row">
+                    <!-- Important Announcement -->
+                    <div class="col-lg-6">
+                        <div class="announcement-card">
+                            <div class="announcement-header">
+                                <span class="announcement-type type-important">Important</span>
+                                <span class="announcement-date">October 5, 2024</span>
+                            </div>
+                            <div class="announcement-content">
+                                <h3 class="announcement-title">Fall 2024 Semester Registration Deadline</h3>
+                                <p class="announcement-text">All students must complete their course registration for Fall 2024 semester by October 15, 2024. Late registration will incur additional fees.</p>
+                            </div>
+                            <div class="announcement-footer">
+                                <a href="announcement-details.html" class="read-more">
+                                    Read More
+                                    <i class="fas fa-arrow-right"></i>
+                                </a>
+                                <div class="announcement-meta">
+                                    <span class="meta-item">
+                                        <i class="fas fa-eye"></i> 1,245
+                                    </span>
+                                    <span class="meta-item">
+                                        <i class="fas fa-download"></i> 85
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="contact-info2">
-                        <p><i class="fas fa-envelope"></i> s.johnson@nextgen.edu</p>
-                        <p><i class="fas fa-phone"></i> +1 (234) 567-8900</p>
-                        <p><i class="fas fa-map-marker-alt"></i> Room 405, Engineering Building</p>
-                        <p><i class="fas fa-clock"></i> Office Hours: Mon-Thu 2-4 PM</p>
+    
+                    <!-- Academic Announcement -->
+                    <div class="col-lg-6">
+                        <div class="announcement-card">
+                            <div class="announcement-header">
+                                <span class="announcement-type type-academic">Academic</span>
+                                <span class="announcement-date">October 4, 2024</span>
+                            </div>
+                            <div class="announcement-content">
+                                <h3 class="announcement-title">New Research Collaboration with MIT</h3>
+                                <p class="announcement-text">We're excited to announce a new research partnership with MIT in the field of Artificial Intelligence and Machine Learning.</p>
+                            </div>
+                            <div class="announcement-footer">
+                                <a href="announcement-details.html" class="read-more">
+                                    Read More
+                                    <i class="fas fa-arrow-right"></i>
+                                </a>
+                                <div class="announcement-meta">
+                                    <span class="meta-item">
+                                        <i class="fas fa-eye"></i> 892
+                                    </span>
+                                    <span class="meta-item">
+                                        <i class="fas fa-download"></i> 43
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- Admission Announcement -->
+                    <div class="col-lg-6">
+                        <div class="announcement-card">
+                            <div class="announcement-header">
+                                <span class="announcement-type type-admission">Admission</span>
+                                <span class="announcement-date">October 3, 2024</span>
+                            </div>
+                            <div class="announcement-content">
+                                <h3 class="announcement-title">Spring 2025 Admission Schedule</h3>
+                                <p class="announcement-text">The admission schedule for Spring 2025 semester has been published. Early application deadline is November 30, 2024.</p>
+                            </div>
+                            <div class="announcement-footer">
+                                <a href="#" class="read-more">
+                                    Read More
+                                    <i class="fas fa-arrow-right"></i>
+                                </a>
+                                <div class="announcement-meta">
+                                    <span class="meta-item">
+                                        <i class="fas fa-eye"></i> 1,567
+                                    </span>
+                                    <span class="meta-item">
+                                        <i class="fas fa-download"></i> 234
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- Event Announcement -->
+                    <div class="col-lg-6">
+                        <div class="announcement-card">
+                            <div class="announcement-header">
+                                <span class="announcement-type type-event">Event</span>
+                                <span class="announcement-date">October 2, 2024</span>
+                            </div>
+                            <div class="announcement-content">
+                                <h3 class="announcement-title">Annual Tech Fest 2024</h3>
+                                <p class="announcement-text">Join us for the biggest technology festival of the year. Featuring workshops, hackathons, and guest speakers from leading tech companies.</p>
+                            </div>
+                            <div class="announcement-footer">
+                                <a href="#" class="read-more">
+                                    Read More
+                                    <i class="fas fa-arrow-right"></i>
+                                </a>
+                                <div class="announcement-meta">
+                                    <span class="meta-item">
+                                        <i class="fas fa-eye"></i> 978
+                                    </span>
+                                    <span class="meta-item">
+                                        <i class="fas fa-download"></i> 112
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-8">
-                <div class="profile-card">
-                    <h4 class="mb-4">About</h4>
-                    <p>Dr. Sarah Johnson is a distinguished professor of Computer Science with over 15 years of
-                        experience in academic research and teaching. Her work focuses on artificial intelligence and
-                        machine learning applications in healthcare.</p>
-                </div>
-
-                <div class="profile-card">
-                    <h4 class="mb-4">Research Interests</h4>
-                    <div>
-                        <span class="expertise-tag">Artificial Intelligence</span>
-                        <span class="expertise-tag">Machine Learning</span>
-                        <span class="expertise-tag">Healthcare Informatics</span>
-                        <span class="expertise-tag">Data Mining</span>
-                        <span class="expertise-tag">Neural Networks</span>
-                    </div>
-                </div>
-
-                <div class="profile-card">
-                    <h4 class="mb-4">Selected Publications</h4>
-                    <div class="publication-item">
-                        <h6>Machine Learning Applications in Healthcare: A Comprehensive Review</h6>
-                        <p class="text-muted">Journal of Medical AI (2023)</p>
-                        <a href="#" class="btn btn-sm btn-outline-success">View Publication</a>
-                    </div>
-                    <div class="publication-item">
-                        <h6>Deep Learning Approaches for Medical Image Analysis</h6>
-                        <p class="text-muted">IEEE Transactions on Medical Imaging (2022)</p>
-                        <a href="#" class="btn btn-sm btn-outline-success">View Publication</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="profile-card">
-                    <h4 class="mb-4">Education</h4>
-                    <div class="mb-3">
-                        <h6>Ph.D. in Computer Science</h6>
-                        <p class="text-muted">Massachusetts Institute of Technology, 2008</p>
-                    </div>
-                    <div class="mb-3">
-                        <h6>M.S. in Computer Science</h6>
-                        <p class="text-muted">Stanford University, 2004</p>
-                    </div>
-                </div>
-
-                <div class="profile-card">
-                    <h4 class="mb-4">Current Courses</h4>
-                    <div class="course-card">
-                        <h6>CSE401: Advanced Machine Learning</h6>
-                        <p class="text-muted mb-0">Fall 2024 - Graduate Level</p>
-                    </div>
-                    <div class="course-card">
-                        <h6>CSE302: Artificial Intelligence</h6>
-                        <p class="text-muted mb-0">Fall 2024 - Undergraduate Level</p>
-                    </div>
-                </div>
-
-                <div class="profile-card">
-                    <h4 class="mb-4">Awards & Recognition</h4>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><i class="fas fa-award text-success me-2"></i> Outstanding Research Award, 2023
-                        </li>
-                        <li class="mb-2"><i class="fas fa-award text-success me-2"></i> Best Teacher Award, 2022</li>
-                        <li class="mb-2"><i class="fas fa-award text-success me-2"></i> Research Excellence Grant, 2021
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div> -->
-
-    <div class="container profile-section">
-        <div class="profile-header">
-            <div class="row align-items-center">
-                <div class="col-md-3 text-center">
-                    <img src="" alt="" class="profile-image mb-3" id="faculty-image">
-                </div>
-                <div class="col-md-6">
-                    <h2 id="faculty-name"></h2>
-                    <p class="lead mb-2" id="faculty-title"></p>
-                    <p class="mb-3" id="faculty-department"></p>
-                    <div class="social-links" id="faculty-social-links"></div>
-                </div>
-                <div class="col-md-3">
-                    <div class="contact-info2">
-                        <p id="faculty-email"><i class="fas fa-envelope"></i> </p>
-                        <p id="faculty-phone"><i class="fas fa-phone"></i> </p>
-                        <p id="faculty-office"><i class="fas fa-map-marker-alt"></i> </p>
-                        <p id="faculty-office-hours"><i class="fas fa-clock"></i> Office Hours: </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    
-        <div class="row">
-            <div class="col-md-8">
-                <div class="profile-card">
-                    <h4 class="mb-4">About</h4>
-                    <p id="faculty-about"></p>
-                </div>
-    
-                <div class="profile-card">
-                    <h4 class="mb-4">Research Interests</h4>
-                    <div id="faculty-expertise"></div>
-                </div>
-    
-                <div class="profile-card">
-                    <h4 class="mb-4">Selected Publications</h4>
-                    <div id="faculty-publications"></div>
-                </div>
-            </div>
-    
-            <div class="col-md-4">
-                <div class="profile-card">
-                    <h4 class="mb-4">Education</h4>
-                    <div id="faculty-education"></div>
-                </div>
-    
-                <div class="profile-card">
-                    <h4 class="mb-4">Current Courses</h4>
-                    <div id="faculty-courses"></div>
-                </div>
-    
-                <div class="profile-card">
-                    <h4 class="mb-4">Awards & Recognition</h4>
-                    <ul class="list-unstyled" id="faculty-awards"></ul>
-                </div>
-            </div>
-        </div>
+        </section>
     </div>
 
     <footer class="footer">
@@ -570,51 +603,104 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="asset/js/faculty-data.js"></script>
-    <script src="asset/js/faculty-details.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Filter functionality
-            const filterBtns = document.querySelectorAll('.faculty-filter-btn');
-            const facultyItems = document.querySelectorAll('.faculty-item');
+        document.addEventListener('DOMContentLoaded', function() {
+    // DOM Elements
+    const searchInput = document.querySelector('.search-box input');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const announcements = document.querySelectorAll('.announcement-card');
 
-            filterBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    // Remove active class from all buttons
-                    filterBtns.forEach(b => b.classList.remove('active'));
-                    // Add active class to clicked button
-                    btn.classList.add('active');
+    // Search functionality
+    searchInput.addEventListener('input', function(e) {
+        const searchTerm = e.target.value.toLowerCase();
+        
+        announcements.forEach(announcement => {
+            const title = announcement.querySelector('.announcement-title').textContent.toLowerCase();
+            const content = announcement.querySelector('.announcement-text').textContent.toLowerCase();
+            
+            if (title.includes(searchTerm) || content.includes(searchTerm)) {
+                announcement.style.display = '';
+            } else {
+                announcement.style.display = 'none';
+            }
+        });
+    });
 
-                    const filter = btn.getAttribute('data-filter');
+    // Filter functionality
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Remove active class from all buttons
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            // Add active class to clicked button
+            this.classList.add('active');
 
-                    facultyItems.forEach(item => {
-                        if (filter === 'all' || item.getAttribute('data-department') === filter) {
-                            item.style.display = 'block';
-                        } else {
-                            item.style.display = 'none';
-                        }
-                    });
-                });
-            });
+            const filterType = this.textContent.toLowerCase();
 
-            // Search functionality
-            const searchInput = document.getElementById('facultySearch');
+            announcements.forEach(announcement => {
+                if (filterType === 'all') {
+                    announcement.style.display = '';
+                    return;
+                }
 
-            searchInput.addEventListener('input', () => {
-                const searchTerm = searchInput.value.toLowerCase();
+                const announcementType = announcement
+                    .querySelector('.announcement-type')
+                    .textContent
+                    .toLowerCase();
 
-                facultyItems.forEach(item => {
-                    const text = item.textContent.toLowerCase();
-                    if (text.includes(searchTerm)) {
-                        item.style.display = 'block';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
+                if (announcementType === filterType) {
+                    announcement.style.display = '';
+                } else {
+                    announcement.style.display = 'none';
+                }
             });
         });
+    });
+
+    // Read More functionality
+    // const readMoreLinks = document.querySelectorAll('.read-more');
+    // readMoreLinks.forEach(link => {
+    //     link.addEventListener('click', function(e) {
+    //         e.preventDefault();
+    //         const card = this.closest('.announcement-card');
+    //         const title = card.querySelector('.announcement-title').textContent;
+    //         // You can implement your own logic here for handling "Read More" clicks
+    //         console.log(`Reading more about: ${title}`);
+    //     });
+    // });
+
+    // Animation on scroll
+    function handleScroll() {
+        announcements.forEach(announcement => {
+            const rect = announcement.getBoundingClientRect();
+            const isVisible = rect.top <= window.innerHeight && rect.bottom >= 0;
+            
+            if (isVisible) {
+                announcement.style.opacity = '1';
+                announcement.style.transform = 'translateY(0)';
+            }
+        });
+    }
+
+    // Initial setup for animations
+    announcements.forEach(announcement => {
+        announcement.style.opacity = '0';
+        announcement.style.transform = 'translateY(20px)';
+        announcement.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    });
+
+    // Add scroll listener
+    window.addEventListener('scroll', handleScroll);
+    // Initial check for visible elements
+    handleScroll();
+
+    // Update view count on read more click (demo purposes)
+    function updateViewCount(metaElement) {
+        const viewCount = metaElement.querySelector('.fa-eye').parentElement;
+        const currentCount = parseInt(viewCount.textContent);
+        viewCount.textContent = ` ${currentCount + 1}`;
+    }
+});
     </script>
->
 </body>
 
 </html>
