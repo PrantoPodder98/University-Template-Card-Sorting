@@ -11,6 +11,26 @@
     <link rel="stylesheet" href="asset/breadcrumb.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .step-content {
+            transition: all 0.3s ease;
+        }
+
+        .progress-step {
+            cursor: pointer;
+        }
+
+        .progress-step.completed {
+            background: #307e4a;
+            color: white;
+            border-color: #307e4a;
+        }
+
         .application-page {
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             padding: 4rem 0;
@@ -102,7 +122,7 @@
         .application-card {
             background: white;
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
             margin-bottom: 2rem;
             overflow: hidden;
         }
@@ -119,7 +139,7 @@
         .header-icon {
             width: 40px;
             height: 40px;
-            background: rgba(255,255,255,0.2);
+            background: rgba(255, 255, 255, 0.2);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -190,7 +210,7 @@
         .form-control:focus {
             border-color: #307e4a;
             outline: none;
-            box-shadow: 0 0 0 3px rgba(48,126,74,0.1);
+            box-shadow: 0 0 0 3px rgba(48, 126, 74, 0.1);
         }
 
         .btn {
@@ -242,7 +262,7 @@
 
         .fee-card:hover {
             background: white;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         .fee-amount {
@@ -271,7 +291,7 @@
             .fee-cards {
                 grid-template-columns: 1fr;
             }
-            
+
             .help-buttons {
                 flex-direction: column;
             }
@@ -466,6 +486,9 @@
                 <li class="breadcrumb-item">
                     <a href="#">Application</a>
                 </li>
+                <li class="breadcrumb-item">
+                    <a href="ug-admission.html">UG Admission</a>
+                </li>
                 <li class="breadcrumb-item active">
                     <a href="#">Apply</a>
                 </li>
@@ -478,154 +501,175 @@
             <div class="container">
                 <div class="page-header">
                     <h1 class="page-title">Online Application</h1>
-                    <p class="page-subtitle">Start your journey with Nextgen University. Complete the application form below to begin your admission process.</p>
+                    <p class="page-subtitle">Start your journey with Nextgen University. Complete the application form
+                        below to begin your admission process.</p>
                     <div class="application-deadline">
                         <i class="fas fa-clock"></i>
                         Application Deadline: October 15, 2024
                     </div>
                 </div>
-    
+
                 <div class="steps-container">
                     <!-- Progress Steps -->
                     <div class="step-progress">
-                        <div class="progress-step active">1</div>
-                        <div class="progress-step">2</div>
-                        <div class="progress-step">3</div>
-                        <div class="progress-step">4</div>
+                        <div class="progress-step active" data-step="1">1</div>
+                        <div class="progress-step" data-step="2">2</div>
+                        <div class="progress-step" data-step="3">3</div>
+                        <div class="progress-step" data-step="4">4</div>
                     </div>
-    
+
+
                     <!-- Requirements Card -->
-                    <div class="application-card">
-                        <div class="card-header">
-                            <div class="header-icon">
-                                <i class="fas fa-list-check"></i>
+                    <div class="step-content" data-step="1">
+                        <div class="application-card">
+                            <div class="card-header">
+                                <div class="header-icon">
+                                    <i class="fas fa-list-check"></i>
+                                </div>
+                                <h2>Application Requirements</h2>
                             </div>
-                            <h2>Application Requirements</h2>
-                        </div>
-                        <div class="card-body">
-                            <ul class="requirements-list">
-                                <li class="requirement-item">
-                                    <i class="fas fa-check-circle requirement-icon"></i>
-                                    <div class="requirement-content">
-                                        <h4>Academic Transcripts</h4>
-                                        <p>Official transcripts from all previously attended institutions</p>
-                                    </div>
-                                </li>
-                                <li class="requirement-item">
-                                    <i class="fas fa-check-circle requirement-icon"></i>
-                                    <div class="requirement-content">
-                                        <h4>Standardized Test Scores</h4>
-                                        <p>SAT/ACT scores for undergraduate applications</p>
-                                    </div>
-                                </li>
-                                <li class="requirement-item">
-                                    <i class="fas fa-check-circle requirement-icon"></i>
-                                    <div class="requirement-content">
-                                        <h4>Letters of Recommendation</h4>
-                                        <p>Two letters of recommendation from academic references</p>
-                                    </div>
-                                </li>
-                                <li class="requirement-item">
-                                    <i class="fas fa-check-circle requirement-icon"></i>
-                                    <div class="requirement-content">
-                                        <h4>Personal Statement</h4>
-                                        <p>Essay describing your academic goals and interests</p>
-                                    </div>
-                                </li>
-                            </ul>
+                            <div class="card-body">
+                                <ul class="requirements-list">
+                                    <li class="requirement-item">
+                                        <i class="fas fa-check-circle requirement-icon"></i>
+                                        <div class="requirement-content">
+                                            <h4>Academic Transcripts</h4>
+                                            <p>Official transcripts from all previously attended institutions</p>
+                                        </div>
+                                    </li>
+                                    <li class="requirement-item">
+                                        <i class="fas fa-check-circle requirement-icon"></i>
+                                        <div class="requirement-content">
+                                            <h4>Standardized Test Scores</h4>
+                                            <p>SAT/ACT scores for undergraduate applications</p>
+                                        </div>
+                                    </li>
+                                    <li class="requirement-item">
+                                        <i class="fas fa-check-circle requirement-icon"></i>
+                                        <div class="requirement-content">
+                                            <h4>Letters of Recommendation</h4>
+                                            <p>Two letters of recommendation from academic references</p>
+                                        </div>
+                                    </li>
+                                    <li class="requirement-item">
+                                        <i class="fas fa-check-circle requirement-icon"></i>
+                                        <div class="requirement-content">
+                                            <h4>Personal Statement</h4>
+                                            <p>Essay describing your academic goals and interests</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <button class="btn btn-primary next-step" onclick="nextStep(1)">Continue</button>
+                            </div>
                         </div>
                     </div>
-    
+
                     <!-- Application Form -->
-                    <div class="application-card">
-                        <div class="card-header">
-                            <div class="header-icon">
-                                <i class="fas fa-user"></i>
+                    <div class="step-content" data-step="2" style="display: none;">
+                        <div class="application-card">
+                            <div class="card-header">
+                                <div class="header-icon">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <h2>Personal Information</h2>
                             </div>
-                            <h2>Personal Information</h2>
-                        </div>
-                        <div class="card-body">
-                            <form>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="form-label">First Name</label>
-                                            <input type="text" class="form-control" required>
+                            <div class="card-body">
+                                <form id="personalInfoForm">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="form-label">First Name</label>
+                                                <input type="text" class="form-control" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="form-label">Last Name</label>
+                                                <input type="text" class="form-control" required>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="form-label">Last Name</label>
-                                            <input type="text" class="form-control" required>
-                                        </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Email Address</label>
+                                        <input type="email" class="form-control" required>
                                     </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Program of Interest</label>
+                                        <select class="form-control" required>
+                                            <option value="">Select a program</option>
+                                            <option>Computer Science</option>
+                                            <option>Business Administration</option>
+                                            <option>Engineering</option>
+                                        </select>
+                                    </div>
+                                </form>
+                                <div class="button-group">
+                                    <button class="btn btn-outline prev-step" onclick="prevStep(2)">Back</button>
+                                    <button class="btn btn-primary next-step" onclick="nextStep(2)">Continue</button>
                                 </div>
-                                <div class="form-group">
-                                    <label class="form-label">Email Address</label>
-                                    <input type="email" class="form-control" required>
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label">Program of Interest</label>
-                                    <select class="form-control" required>
-                                        <option value="">Select a program</option>
-                                        <option>Computer Science</option>
-                                        <option>Business Administration</option>
-                                        <option>Engineering</option>
-                                    </select>
-                                </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
-    
+
                     <!-- Application Fees -->
-                    <div class="application-card">
-                        <div class="card-header">
-                            <div class="header-icon">
-                                <i class="fas fa-dollar-sign"></i>
+                    <div class="step-content" data-step="3" style="display: none;">
+                        <div class="application-card">
+                            <div class="card-header">
+                                <div class="header-icon">
+                                    <i class="fas fa-dollar-sign"></i>
+                                </div>
+                                <h2>Application Fees</h2>
                             </div>
-                            <h2>Application Fees</h2>
-                        </div>
-                        <div class="card-body">
-                            <div class="fee-cards">
-                                <div class="fee-card">
-                                    <h3>Undergraduate</h3>
-                                    <div class="fee-amount">$75</div>
-                                    <p>For all undergraduate programs</p>
+                            <div class="card-body">
+                                <div class="fee-cards">
+                                    <div class="fee-card">
+                                        <h3>Undergraduate</h3>
+                                        <div class="fee-amount">$75</div>
+                                        <p>For all undergraduate programs</p>
+                                    </div>
+                                    <div class="fee-card">
+                                        <h3>Graduate</h3>
+                                        <div class="fee-amount">$90</div>
+                                        <p>For all graduate programs</p>
+                                    </div>
+                                    <div class="fee-card">
+                                        <h3>International</h3>
+                                        <div class="fee-amount">$120</div>
+                                        <p>For international students</p>
+                                    </div>
                                 </div>
-                                <div class="fee-card">
-                                    <h3>Graduate</h3>
-                                    <div class="fee-amount">$90</div>
-                                    <p>For all graduate programs</p>
-                                </div>
-                                <div class="fee-card">
-                                    <h3>International</h3>
-                                    <div class="fee-amount">$120</div>
-                                    <p>For international students</p>
+                                <div class="button-group">
+                                    <button class="btn btn-outline prev-step" onclick="prevStep(3)">Back</button>
+                                    <button class="btn btn-primary next-step" onclick="nextStep(3)">Continue</button>
                                 </div>
                             </div>
+
                         </div>
                     </div>
-    
-                    <!-- Help Section -->
-                    <div class="help-section">
-                        <h3>Need Help?</h3>
-                        <p>Our admission counselors are here to help you with your application process</p>
-                        <div class="help-buttons">
-                            <button class="btn btn-primary">
-                                <i class="fas fa-phone"></i>
-                                Contact Support
-                            </button>
-                            <button class="btn btn-outline">
-                                <i class="fas fa-message"></i>
-                                Live Chat
-                            </button>
+
+                    <div class="step-content" data-step="4" style="display: none;">
+                        <!-- Final Step -->
+                        <div class="application-card">
+                            <div class="card-header">
+                                <div class="header-icon">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <h2>Review & Submit</h2>
+                            </div>
+                            <div class="card-body">
+                                <!-- Review content... -->
+                                <div class="button-group">
+                                    <button class="btn btn-outline prev-step" onclick="prevStep(4)">Back</button>
+                                    <button class="btn btn-primary" onclick="submitApplication()">Submit
+                                        Application</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
         </section>
     </div>
-    
+
 
     <footer class="footer">
         <div class="container">
@@ -706,6 +750,83 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let currentStep = 1;
+
+        function updateSteps(step) {
+            // Update progress steps
+            document.querySelectorAll('.progress-step').forEach(stepEl => {
+                const stepNum = parseInt(stepEl.dataset.step);
+                stepEl.classList.remove('active');
+                if (stepNum < step) {
+                    stepEl.classList.add('completed');
+                } else if (stepNum === step) {
+                    stepEl.classList.add('active');
+                } else {
+                    stepEl.classList.remove('completed');
+                }
+            });
+
+            // Show/hide step content
+            document.querySelectorAll('.step-content').forEach(content => {
+                content.style.display = content.dataset.step == step ? 'block' : 'none';
+            });
+        }
+
+        function nextStep(currentStepNum) {
+            if (validateStep(currentStepNum)) {
+                currentStep = Math.min(currentStepNum + 1, 4);
+                updateSteps(currentStep);
+            }
+        }
+
+        function prevStep(currentStepNum) {
+            currentStep = Math.max(currentStepNum - 1, 1);
+            updateSteps(currentStep);
+        }
+
+        function validateStep(step) {
+            // Add validation logic for each step
+            switch (step) {
+                case 1:
+                    return true; // Just viewing requirements
+                case 2:
+                    return validatePersonalInfo();
+                case 3:
+                    return validatePaymentSelection();
+                default:
+                    return true;
+            }
+        }
+
+        function validatePersonalInfo() {
+            const form = document.getElementById('personalInfoForm');
+            return form.checkValidity();
+        }
+
+        function validatePaymentSelection() {
+            // Add payment validation logic
+            return true;
+        }
+
+        function submitApplication() {
+            if (validateStep(4)) {
+                // Add submission logic
+                alert('Application submitted successfully!');
+            }
+        }
+
+        // Allow clicking on progress steps directly if previous steps are completed
+        document.querySelectorAll('.progress-step').forEach(step => {
+            step.addEventListener('click', () => {
+                const stepNum = parseInt(step.dataset.step);
+                if (stepNum <= currentStep) {
+                    currentStep = stepNum;
+                    updateSteps(currentStep);
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

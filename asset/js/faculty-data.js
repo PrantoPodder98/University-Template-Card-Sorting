@@ -2,9 +2,9 @@ const facultyData = [
   {
     id: "sarah-johnson",
     name: "Dr. Sarah Johnson",
-    title: "Professor of Business Administration",
-    shortDepartment: "sobe",
-    department: "School of Business and Economics",
+    title: "Professor of Computer Science and Engineering",
+    shortDepartment: "cse",
+    department: "Computer Science and Engineering",
     image:
       "https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?w=800&q=80",
     email: "s.johnson@nextgen.edu",
@@ -16,13 +16,13 @@ const facultyData = [
     expertise: ["Strategic Management", "Leadership"],
     education: [
       {
-        degree: "Ph.D. in Business Administration",
+        degree: "Ph.D. in Computer Science and Engineering",
         institution: "Harvard Business School",
         year: 2010,
       },
       {
-        degree: "M.B.A.",
-        institution: "Yale School of Management",
+        degree: "MSC.",
+        institution: "Yale School of Engineering & Applied Science",
         year: 2006,
       },
     ],
@@ -68,9 +68,9 @@ const facultyData = [
   {
     id: "michael-chen",
     name: "Dr. Michael Chen",
-    title: "Associate Professor of Computer Science",
-    shortDepartment: "seps",
-    department: "School of Engineering and Physical Sciences",
+    title: "Associate Professor of Electrical and Electronic Engineering",
+    shortDepartment: "eee",
+    department: "Electrical and Electronic Engineering",
     image:
       "https://images.unsplash.com/photo-1615109398623-88346a601842?w=800&q=80",
     email: "m.chen@nextgen.edu",
@@ -131,8 +131,8 @@ const facultyData = [
     id: "emma-davis",
     name: "Dr. Emma Davis",
     title: "Professor of Marketing",
-    shortDepartment: "sobe",
-    department: "School of Business and Economics",
+    shortDepartment: "cse",
+    department: "Computer Science and Engineering",
     image:
       "https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=800&q=80",
     email: "e.davis@nextgen.edu",
@@ -140,16 +140,16 @@ const facultyData = [
     office: "Room 301, Business Building",
     officeHours: "Mon-Fri 11 AM - 1 PM",
     about:
-      "Dr. Emma Davis is an expert in digital marketing and consumer behavior, with a strong focus on online advertising strategies.",
-    expertise: ["Digital Marketing", "Consumer Behavior"],
+      "Dr. Emma Davis is an expert in Software Enginnering and consumer behavior, with a strong focus on online advertising strategies.",
+    expertise: ["Software Enginnering", "Consumer Behavior"],
     education: [
       {
-        degree: "Ph.D. in Marketing",
+        degree: "Ph.D. in Software Enginnering",
         institution: "Stanford University",
         year: 2013,
       },
       {
-        degree: "M.S. in Marketing",
+        degree: "M.S.C in Software Enginnering",
         institution: "University of California, Berkeley",
         year: 2009,
       },
@@ -197,8 +197,8 @@ const facultyData = [
     id: "sophia-martinez",
     name: "Dr. Sophia Martinez",
     title: "Assistant Professor of Physics",
-    shortDepartment: "seps",
-    department: "School of Engineering and Physical Sciences",
+    shortDepartment: "eee",
+    department: "Electrical and Electronic Engineering",
     image:
       "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=800&q=80",
     email: "s.martinez@nextgen.edu",
@@ -209,9 +209,9 @@ const facultyData = [
       "Dr. Sophia Martinez is an emerging researcher in quantum physics and nanotechnology, with groundbreaking work in material science.",
     expertise: ["Quantum Physics", "Nanotechnology"],
     education: [
-      { degree: "Ph.D. in Physics", institution: "Caltech", year: 2016 },
+      { degree: "Ph.D. in EEE", institution: "Caltech", year: 2016 },
       {
-        degree: "B.S. in Physics",
+        degree: "B.S. in EEE",
         institution: "University of California, Berkeley",
         year: 2012,
       },
@@ -259,8 +259,8 @@ const facultyData = [
     id: "robert-lee",
     name: "Dr. Robert Lee",
     title: "Professor of Economics",
-    shortDepartment: "sohs",
-    department: "School of Humanities and Social Sciences",
+    shortDepartment: "civil",
+    department: "Civil Engineering",
     image:
       "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800&q=80",
     email: "r.lee@nextgen.edu",
@@ -272,12 +272,12 @@ const facultyData = [
     expertise: ["Macroeconomics", "Behavioral Economics"],
     education: [
       {
-        degree: "Ph.D. in Economics",
+        degree: "Ph.D. in CIVIL Engineering",
         institution: "University of Chicago",
         year: 2005,
       },
       {
-        degree: "M.S. in Economics",
+        degree: "M.S. in civil Engineering",
         institution: "London School of Economics",
         year: 2001,
       },
@@ -325,8 +325,8 @@ const facultyData = [
     id: "olivia-wang",
     name: "Dr. Olivia Wang",
     title: "Professor of Biology",
-    shortDepartment: "seps",
-    department: "School of Engineering and Physical Sciences",
+    shortDepartment: "eee",
+    department: "Electrical and Electronic Engineering",
     image:
       "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800&q=80",
     email: "o.wang@nextgen.edu",
@@ -334,16 +334,16 @@ const facultyData = [
     office: "Room 310, Science Building",
     officeHours: "Wed-Fri 11 AM - 1 PM",
     about:
-      "Dr. Olivia Wang has made significant contributions to the field of genetics and cell biology, particularly in the area of gene regulation and developmental biology.",
-    expertise: ["Genetics", "Cell Biology"],
+      "Dr. Olivia Wang has made significant contributions to the field of EEE and CSE, particularly in the area of CSE.",
+    expertise: ["CSE", "EEE"],
     education: [
       {
-        degree: "Ph.D. in Biology",
+        degree: "Ph.D. in EEE",
         institution: "University of Oxford",
         year: 2011,
       },
       {
-        degree: "M.S. in Molecular Biology",
+        degree: "M.S. in CSE",
         institution: "Harvard University",
         year: 2007,
       },
@@ -391,8 +391,8 @@ const facultyData = [
     id: "james-taylor",
     name: "Dr. James Taylor",
     title: "Associate Professor of Finance",
-    shortDepartment: "sobe",
-    department: "School of Business and Economics",
+    shortDepartment: "cse",
+    department: "Computer Science and Engineering",
     image:
       "https://images.unsplash.com/photo-1573497491208-6b1acb260507?w=800&q=80",
     email: "j.taylor@nextgen.edu",
@@ -404,12 +404,12 @@ const facultyData = [
     expertise: ["Investment Banking", "Corporate Finance"],
     education: [
       {
-        degree: "Ph.D. in Finance",
+        degree: "Ph.D. in CSE",
         institution: "London School of Economics",
         year: 2012,
       },
       {
-        degree: "M.B.A.",
+        degree: "MSC",
         institution: "Wharton School, University of Pennsylvania",
         year: 2008,
       },
@@ -457,8 +457,8 @@ const facultyData = [
     id: "aiden-patel",
     name: "Dr. Aiden Patel",
     title: "Professor of Electrical Engineering",
-    shortDepartment: "shls",
-    department: "School of Health and Life Sciences",
+    shortDepartment: "archi",
+    department: "Architecture",
     image:
       "https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?w=800&q=80",
     email: "a.patel@nextgen.edu",
@@ -523,8 +523,8 @@ const facultyData = [
     id: "isabella-gomez",
     name: "Dr. Isabella Gomez",
     title: "Assistant Professor of Chemistry",
-    shortDepartment: "shls",
-    department: "School of Health and Life Sciences",
+    shortDepartment: "archi",
+    department: "Architecture",
     image:
       "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800&q=80",
     email: "i.gomez@nextgen.edu",
@@ -533,22 +533,22 @@ const facultyData = [
     officeHours: "Mon-Fri 12-2 PM",
     about:
       "Dr. Isabella Gomez's expertise lies in organic chemistry and chemical synthesis, with a focus on sustainable chemistry and green synthesis techniques.",
-    expertise: ["Organic Chemistry", "Chemical Synthesis"],
+    expertise: ["Organic Architecture", "Chemical Synthesis"],
     education: [
       {
-        degree: "Ph.D. in Chemistry",
+        degree: "Ph.D. in Architecture",
         institution: "Yale University",
         year: 2015,
       },
       {
-        degree: "B.S. in Chemistry",
+        degree: "B.S. in Architecture",
         institution: "University of California, Berkeley",
         year: 2010,
       },
     ],
     publications: [
       {
-        title: "Sustainable Chemical Synthesis Techniques",
+        title: "Sustainable Architecture Synthesis Techniques",
         journal: "Journal of Organic Chemistry",
         year: 2023,
         url: "#",

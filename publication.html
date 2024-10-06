@@ -10,7 +10,42 @@
     <link rel="stylesheet" href="asset/style.css">
     <link rel="stylesheet" href="asset/breadcrumb.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
+    <style>
+        .card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
+        }
+        
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .card-subtitle {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .card-text {
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+        
+        .btn-outline-primary {
+            border-color: #22B369;
+            color: #22B369;
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: #22B369;
+            color: white;
+        }
+    </style>
 </head>
 
 <body>
@@ -198,23 +233,201 @@
                     <a href="index2.html"><i class="fas fa-home"></i></a>
                 </li>
                 <li class="breadcrumb-item">
-                    <a href="#">Faculty</a>
-                </li>
-                <li class="breadcrumb-item">
-                    <a href="#">School of Engineering</a>
-                </li>
-                <li class="breadcrumb-item">
-                    <a href="faculty-list.html">Computer Science and Engineering</a>
+                    <a href="#">Research</a>
                 </li>
                 <li class="breadcrumb-item active">
-                    <a href="#">Dr. Sarah Johnson</a>
+                    <a href="#">Publication</a>
                 </li>
             </ol>
         </div>
     </nav>
 
-    <div class="my-5">
+    <div class="container my-5">
+        <h2 class="text-center mb-4">Faculty Publications</h2>
         
+        <div class="row">
+            <div class="col-md-3 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Leadership Strategies in Modern Corporations</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Dr. Sarah Johnson</h6>
+                        <p class="card-text">Journal of Business Leadership, 2022</p>
+                        <a href="#" class="btn btn-outline-primary btn-sm">Read More</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-3 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">AI and Data Science for Real-World Applications</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Dr. Michael Chen</h6>
+                        <p class="card-text">IEEE AI Journal, 2023</p>
+                        <a href="#" class="btn btn-outline-primary btn-sm">Read More</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-3 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Consumer Behavior in the Digital Age</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Dr. Emma Davis</h6>
+                        <p class="card-text">Marketing Science Journal, 2023</p>
+                        <a href="#" class="btn btn-outline-primary btn-sm">Read More</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-3 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Quantum Computing Advances</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Dr. Sophia Martinez</h6>
+                        <p class="card-text">Journal of Quantum Physics, 2023</p>
+                        <a href="#" class="btn btn-outline-primary btn-sm">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row mt-4">
+            <div class="col-md-3 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Global Financial Markets and Behavioral Economics</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Dr. Robert Lee</h6>
+                        <p class="card-text">Journal of Economic Theory, 2023</p>
+                        <a href="#" class="btn btn-outline-primary btn-sm">Read More</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-3 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Gene Regulation Mechanisms in Developmental Biology</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Dr. Olivia Wang</h6>
+                        <p class="card-text">Nature Genetics, 2023</p>
+                        <a href="#" class="btn btn-outline-primary btn-sm">Read More</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-3 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Corporate Finance Strategies for Large Enterprises</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Dr. James Taylor</h6>
+                        <p class="card-text">Journal of Corporate Finance, 2023</p>
+                        <a href="#" class="btn btn-outline-primary btn-sm">Read More</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-3 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Advances in Microelectronics for Smart Devices</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Dr. Aiden Patel</h6>
+                        <p class="card-text">IEEE Transactions on Electronics, 2023</p>
+                        <a href="#" class="btn btn-outline-primary btn-sm">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Leadership Strategies in Modern Corporations</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Dr. Sarah Johnson</h6>
+                        <p class="card-text">Journal of Business Leadership, 2022</p>
+                        <a href="#" class="btn btn-outline-primary btn-sm">Read More</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-3 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">AI and Data Science for Real-World Applications</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Dr. Michael Chen</h6>
+                        <p class="card-text">IEEE AI Journal, 2023</p>
+                        <a href="#" class="btn btn-outline-primary btn-sm">Read More</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-3 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Consumer Behavior in the Digital Age</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Dr. Emma Davis</h6>
+                        <p class="card-text">Marketing Science Journal, 2023</p>
+                        <a href="#" class="btn btn-outline-primary btn-sm">Read More</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-3 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Quantum Computing Advances</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Dr. Sophia Martinez</h6>
+                        <p class="card-text">Journal of Quantum Physics, 2023</p>
+                        <a href="#" class="btn btn-outline-primary btn-sm">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row mt-4">
+            <div class="col-md-3 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Global Financial Markets and Behavioral Economics</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Dr. Robert Lee</h6>
+                        <p class="card-text">Journal of Economic Theory, 2023</p>
+                        <a href="#" class="btn btn-outline-primary btn-sm">Read More</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-3 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Gene Regulation Mechanisms in Developmental Biology</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Dr. Olivia Wang</h6>
+                        <p class="card-text">Nature Genetics, 2023</p>
+                        <a href="#" class="btn btn-outline-primary btn-sm">Read More</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-3 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Corporate Finance Strategies for Large Enterprises</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Dr. James Taylor</h6>
+                        <p class="card-text">Journal of Corporate Finance, 2023</p>
+                        <a href="#" class="btn btn-outline-primary btn-sm">Read More</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-3 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Advances in Microelectronics for Smart Devices</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Dr. Aiden Patel</h6>
+                        <p class="card-text">IEEE Transactions on Electronics, 2023</p>
+                        <a href="#" class="btn btn-outline-primary btn-sm">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     
 
