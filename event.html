@@ -11,183 +11,186 @@
     <link rel="stylesheet" href="asset/breadcrumb.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
-        .history-page {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            padding: 4rem 0;
-            min-height: 100vh;
+        :root {
+            --primary-color: #307e4a;
+            --secondary-color: #215a34;
         }
 
-        .page-header {
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
+        .events-header {
+            background-color: #f8f9fa;
+            padding: 50px 0;
+            margin-bottom: 30px;
         }
 
-        .page-header::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background: #307e4a;
-            margin: 1rem auto;
-            border-radius: 2px;
+        .filter-section {
+            background-color: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
         }
 
-        .page-title {
-            color: #1a1a1a;
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
+        .filter-btn {
+            background-color: white;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            margin: 5px;
+            border-radius: 25px;
+            padding: 8px 20px;
+            transition: all 0.3s;
         }
 
-        .timeline-section {
-            background: white;
-            border-radius: 20px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        }
-
-        .timeline-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid #f0f0f0;
-        }
-
-        .timeline-icon {
-            width: 50px;
-            height: 50px;
-            background: #307e4a;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--primary-color);
             color: white;
-            font-size: 1.5rem;
         }
 
-        .timeline-title {
-            font-size: 1.8rem;
-            color: #1a1a1a;
+        .event-card {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            height: 100%;
+            margin-bottom: 30px;
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        .event-image {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .event-date {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: white;
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .event-date .month {
+            color: var(--primary-color);
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.8rem;
             margin: 0;
         }
 
-        .history-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+        .event-date .day {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0;
+            line-height: 1;
         }
 
-        .history-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-
-        .history-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-        }
-
-        .card-image {
-            height: 200px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .card-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .history-card:hover .card-image img {
-            transform: scale(1.1);
-        }
-
-        .card-content {
-            padding: 1.5rem;
-        }
-
-        .card-year {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            background: #307e4a;
+        .event-type {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: var(--primary-color);
             color: white;
+            padding: 5px 15px;
             border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        .event-details {
+            padding: 20px;
+        }
+
+        .event-time {
+            color: #6c757d;
             font-size: 0.9rem;
-            margin-bottom: 1rem;
+            margin-bottom: 10px;
         }
 
-        .card-title {
-            font-size: 1.25rem;
-            color: #1a1a1a;
-            margin-bottom: 1rem;
+        .event-location {
+            color: #6c757d;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
         }
 
-        .card-text {
-            color: #666;
-            line-height: 1.6;
-            margin-bottom: 1rem;
-        }
-
-        .read-more {
-            color: #307e4a;
+        .register-btn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
             text-decoration: none;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            transition: all 0.3s;
+            display: inline-block;
         }
 
-        .read-more:hover {
-            color: #266940;
+        .register-btn:hover {
+            background-color: var(--secondary-color);
+            color: white;
         }
 
-        .stat-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 3rem;
+        .calendar-view-btn {
+            background-color: white;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+            margin-bottom: 20px;
         }
 
-        .stat-card {
-            background: white;
+        .calendar-view-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .featured-event {
+            position: relative;
             border-radius: 15px;
-            padding: 1.5rem;
-            text-align: center;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(0,0,0,0.08);
+            overflow: hidden;
+            margin-bottom: 30px;
         }
 
-        .stat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        .featured-event img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
         }
 
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #307e4a;
-            margin-bottom: 0.5rem;
+        .featured-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 30px;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
         }
 
-        .stat-label {
-            color: #666;
-            font-size: 1rem;
+        .search-box {
+            position: relative;
+            margin-bottom: 20px;
         }
 
-        @media (max-width: 768px) {
-            .history-grid {
-                grid-template-columns: 1fr;
-            }
+        .search-box input {
+            padding: 15px 20px 15px 45px;
+            border: 2px solid #dee2e6;
+            border-radius: 30px;
+            width: 100%;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6c757d;
         }
     </style>
 </head>
@@ -377,101 +380,221 @@
                     <a href="index2.html"><i class="fas fa-home"></i></a>
                 </li>
                 <li class="breadcrumb-item">
-                    <a href="#">About</a>
+                    <a href="#">News and Events</a>
                 </li>
                 <li class="breadcrumb-item active">
-                    <a href="information.html">Information And History</a>
+                    <a href="#">Events</a>
                 </li>
             </ol>
         </div>
     </nav>
 
     <div class="my-5">
-        <section class="history-page">
+        <div class="events-header">
             <div class="container">
-                <div class="page-header">
-                    <h1 class="page-title">Our History & Legacy</h1>
-                    <p>Shaping the future through excellence in education since 1990</p>
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <h1 class="mb-4">University Events</h1>
+                        <p class="lead">Discover upcoming events, conferences, workshops, and more at Nextgen University.</p>
+                    </div>
+                    <div class="col-md-6 text-end">
+                        <a href="#" class="calendar-view-btn">
+                            <i class="far fa-calendar-alt me-2"></i>
+                            Calendar View
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="container">
+            <!-- Featured Event -->
+            <div class="featured-event">
+                <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&h=400" alt="Global Tech Summit">
+                <div class="featured-overlay">
+                    <span class="badge bg-primary mb-2">Featured Event</span>
+                    <h2>Global Technology Summit 2024</h2>
+                    <p class="mb-3">Join industry leaders and innovators for our flagship technology conference.</p>
+                    <p><i class="far fa-calendar-alt me-2"></i>July 15-17, 2024</p>
+                    <a href="event-details.html" class="register-btn">Read More</a>
+                </div>
+            </div>
+    
+            <!-- Filter Section -->
+            <!-- <div class="filter-section">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Search events...">
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="d-flex flex-wrap justify-content-md-end">
+                            <button class="filter-btn active">All Events</button>
+                            <button class="filter-btn">Academic</button>
+                            <button class="filter-btn">Conferences</button>
+                            <button class="filter-btn">Workshops</button>
+                            <button class="filter-btn">Cultural</button>
+                            <button class="filter-btn">Sports</button>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+    
+            <!-- Events Grid -->
+            <div class="row">
+                <!-- Event Card 1 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="event-card">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=400&h=200" alt="AI Workshop" class="event-image">
+                            <div class="event-date">
+                                <p class="month">Jun</p>
+                                <p class="day">25</p>
+                            </div>
+                            <span class="event-type">Workshop</span>
+                        </div>
+                        <div class="event-details">
+                            <h5>AI and Machine Learning Workshop</h5>
+                            <div class="event-time">
+                                <i class="far fa-clock me-2"></i>9:00 AM - 5:00 PM
+                            </div>
+                            <div class="event-location">
+                                <i class="fas fa-map-marker-alt me-2"></i>Tech Center, Room 301
+                            </div>
+                            <p class="mb-3">Learn the fundamentals of AI and ML in this hands-on workshop...</p>
+                            <a href="#" class="register-btn">Read More</a>
+                        </div>
+                    </div>
                 </div>
     
-                <!-- Timeline Section -->
-                <div class="timeline-section">
-                    <div class="timeline-header">
-                        <div class="timeline-icon">
-                            <i class="fas fa-landmark"></i>
+                <!-- Event Card 2 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="event-card">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1503694978374-8a2fa686963a?auto=format&fit=crop&w=400&h=200" alt="Research Conference" class="event-image">
+                            <div class="event-date">
+                                <p class="month">Jun</p>
+                                <p class="day">28</p>
+                            </div>
+                            <span class="event-type">Conference</span>
                         </div>
-                        <h2 class="timeline-title">Our Journey Through Time</h2>
-                    </div>
-    
-                    <div class="history-grid">
-                        <!-- Founding Years Card -->
-                        <div class="history-card">
-                            <div class="card-image">
-                                <img src="asset/img/slider/1.webp" alt="University founding">
+                        <div class="event-details">
+                            <h5>International Research Conference</h5>
+                            <div class="event-time">
+                                <i class="far fa-clock me-2"></i>10:00 AM - 6:00 PM
                             </div>
-                            <div class="card-content">
-                                <span class="card-year">1990</span>
-                                <h3 class="card-title">The Founding Vision</h3>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-                                <a href="founding-vision.html" class="read-more">
-                                    Learn More <i class="fas fa-arrow-right"></i>
-                                </a>
+                            <div class="event-location">
+                                <i class="fas fa-map-marker-alt me-2"></i>Main Auditorium
                             </div>
-                        </div>
-    
-                        <!-- Growth Period Card -->
-                        <div class="history-card">
-                            <div class="card-image">
-                                <img src="asset/img/slider/2.webp" alt="Campus expansion">
-                            </div>
-                            <div class="card-content">
-                                <span class="card-year">2000</span>
-                                <h3 class="card-title">Era of Expansion</h3>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
-                                <a href="#" class="read-more">
-                                    Learn More <i class="fas fa-arrow-right"></i>
-                                </a>
-                            </div>
-                        </div>
-    
-                        <!-- Modern Era Card -->
-                        <div class="history-card">
-                            <div class="card-image">
-                                <img src="asset/img/slider/3.webp" alt="Modern campus">
-                            </div>
-                            <div class="card-content">
-                                <span class="card-year">2020</span>
-                                <h3 class="card-title">Digital Revolution</h3>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</p>
-                                <a href="#" class="read-more">
-                                    Learn More <i class="fas fa-arrow-right"></i>
-                                </a>
-                            </div>
+                            <p class="mb-3">Join researchers from around the world presenting their latest findings...</p>
+                            <a href="#" class="register-btn">Read More</a>
                         </div>
                     </div>
+                </div>
     
-                    <!-- Stats Section -->
-                    <div class="stat-cards">
-                        <div class="stat-card">
-                            <div class="stat-number">30+</div>
-                            <div class="stat-label">Years of Excellence</div>
+                <!-- Event Card 3 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="event-card">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?auto=format&fit=crop&w=400&h=200" alt="Cultural Festival" class="event-image">
+                            <div class="event-date">
+                                <p class="month">Jul</p>
+                                <p class="day">02</p>
+                            </div>
+                            <span class="event-type">Cultural</span>
                         </div>
-                        <div class="stat-card">
-                            <div class="stat-number">50,000+</div>
-                            <div class="stat-label">Alumni Worldwide</div>
+                        <div class="event-details">
+                            <h5>International Cultural Festival</h5>
+                            <div class="event-time">
+                                <i class="far fa-clock me-2"></i>11:00 AM - 8:00 PM
+                            </div>
+                            <div class="event-location">
+                                <i class="fas fa-map-marker-alt me-2"></i>University Square
+                            </div>
+                            <p class="mb-3">Experience diverse cultures through food, music, and performances...</p>
+                            <a href="#" class="register-btn">Read More</a>
                         </div>
-                        <div class="stat-card">
-                            <div class="stat-number">200+</div>
-                            <div class="stat-label">Academic Programs</div>
+                    </div>
+                </div>
+    
+                <!-- Event Card 4 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="event-card">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=400&h=200" alt="Sports Tournament" class="event-image">
+                            <div class="event-date">
+                                <p class="month">Jul</p>
+                                <p class="day">05</p>
+                            </div>
+                            <span class="event-type">Sports</span>
                         </div>
-                        <div class="stat-card">
-                            <div class="stat-number">1000+</div>
-                            <div class="stat-label">Faculty Members</div>
+                        <div class="event-details">
+                            <h5>Inter-University Sports Tournament</h5>
+                            <div class="event-time">
+                                <i class="far fa-clock me-2"></i>9:00 AM - 6:00 PM
+                            </div>
+                            <div class="event-location">
+                                <i class="fas fa-map-marker-alt me-2"></i>University Stadium
+                            </div>
+                            <p class="mb-3">Annual sports competition featuring teams from multiple universities...</p>
+                            <a href="#" class="register-btn">Read More</a>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Event Card 5 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="event-card">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1519985176271-adb1088fa94c?auto=format&fit=crop&w=400&h=200" alt="Career Fair" class="event-image">
+                            <div class="event-date">
+                                <p class="month">Jul</p>
+                                <p class="day">08</p>
+                            </div>
+                            <span class="event-type">Career</span>
+                        </div>
+                        <div class="event-details">
+                            <h5>Summer Career Fair 2024</h5>
+                            <div class="event-time">
+                                <i class="far fa-clock me-2"></i>10:00 AM - 4:00 PM
+                            </div>
+                            <div class="event-location">
+                                <i class="fas fa-map-marker-alt me-2"></i>Business School Complex
+                            </div>
+                            <p class="mb-3">Meet recruiters from top companies and explore career opportunities...</p>
+                            <a href="#" class="register-btn">Read More</a>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Event Card 6 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="event-card">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&h=200" alt="Entrepreneurship Workshop" class="event-image">
+                            <div class="event-date">
+                                <p class="month">Jul</p>
+                                <p class="day">12</p>
+                            </div>
+                            <span class="event-type">Workshop</span>
+                        </div>
+                        <div class="event-details">
+                            <h5>Startup Entrepreneurship Workshop</h5>
+                            <div class="event-time">
+                                <i class="far fa-clock me-2"></i>2:00 PM - 6:00 PM
+                            </div>
+                            <div class="event-location">
+                                <i class="fas fa-map-marker-alt me-2"></i>Innovation Hub
+                            </div>
+                            <p class="mb-3">Learn from successful entrepreneurs and develop your business idea...</p>
+                            <a href="#" class="register-btn">Read More</a>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
     </div>
     
 

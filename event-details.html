@@ -11,183 +11,127 @@
     <link rel="stylesheet" href="asset/breadcrumb.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
-        .history-page {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            padding: 4rem 0;
-            min-height: 100vh;
+        :root {
+            --primary-color: #307e4a;
+            --secondary-color: #215a34;
         }
 
-        .page-header {
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
+        .event-header {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&h=400');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            margin-bottom: 50px;
         }
 
-        .page-header::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background: #307e4a;
-            margin: 1rem auto;
-            border-radius: 2px;
-        }
-
-        .page-title {
-            color: #1a1a1a;
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .timeline-section {
+        .event-meta {
             background: white;
-            border-radius: 20px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            padding: 30px;
+            margin-bottom: 30px;
         }
 
-        .timeline-header {
+        .meta-item {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid #f0f0f0;
+            margin-bottom: 20px;
         }
 
-        .timeline-icon {
+        .meta-icon {
             width: 50px;
             height: 50px;
-            background: #307e4a;
+            background: var(--primary-color);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            margin-right: 15px;
             color: white;
-            font-size: 1.5rem;
+            font-size: 20px;
         }
 
-        .timeline-title {
-            font-size: 1.8rem;
-            color: #1a1a1a;
+        .meta-content h5 {
             margin: 0;
+            color: #333;
         }
 
-        .history-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+        .meta-content p {
+            margin: 5px 0 0;
+            color: #666;
         }
 
-        .history-card {
+        .event-details-card {
             background: white;
             border-radius: 15px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            padding: 30px;
+            margin-bottom: 30px;
         }
 
-        .history-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        .event-image {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
         }
 
-        .card-image {
-            height: 200px;
-            overflow: hidden;
+        .register-btn {
+            background: var(--primary-color);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            border: none;
+            font-size: 18px;
+        }
+
+        .register-btn:hover {
+            background: var(--secondary-color);
+            color: white;
+        }
+
+        .schedule-item {
+            border-left: 3px solid var(--primary-color);
+            padding-left: 20px;
+            margin-bottom: 30px;
             position: relative;
         }
 
-        .card-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
+        .schedule-item::before {
+            content: '';
+            width: 15px;
+            height: 15px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            position: absolute;
+            left: -9px;
+            top: 5px;
         }
 
-        .history-card:hover .card-image img {
-            transform: scale(1.1);
-        }
-
-        .card-content {
-            padding: 1.5rem;
-        }
-
-        .card-year {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            background: #307e4a;
-            color: white;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-
-        .card-title {
-            font-size: 1.25rem;
-            color: #1a1a1a;
-            margin-bottom: 1rem;
-        }
-
-        .card-text {
-            color: #666;
-            line-height: 1.6;
-            margin-bottom: 1rem;
-        }
-
-        .read-more {
-            color: #307e4a;
-            text-decoration: none;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .read-more:hover {
-            color: #266940;
-        }
-
-        .stat-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 3rem;
-        }
-
-        .stat-card {
-            background: white;
-            border-radius: 15px;
-            padding: 1.5rem;
+        .speaker-card {
             text-align: center;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(0,0,0,0.08);
+            margin-bottom: 30px;
         }
 
-        .stat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        .speaker-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 15px;
         }
 
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #307e4a;
-            margin-bottom: 0.5rem;
+        .social-links a {
+            color: var(--primary-color);
+            margin: 0 10px;
+            font-size: 20px;
         }
 
-        .stat-label {
-            color: #666;
-            font-size: 1rem;
-        }
-
-        @media (max-width: 768px) {
-            .history-grid {
-                grid-template-columns: 1fr;
-            }
+        .gallery-image {
+            border-radius: 10px;
+            margin-bottom: 20px;
         }
     </style>
 </head>
@@ -377,102 +321,199 @@
                     <a href="index2.html"><i class="fas fa-home"></i></a>
                 </li>
                 <li class="breadcrumb-item">
-                    <a href="#">About</a>
+                    <a href="#">News and Events</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="event.html">Event</a>
                 </li>
                 <li class="breadcrumb-item active">
-                    <a href="information.html">Information And History</a>
+                    <a href="#">Details</a>
                 </li>
             </ol>
         </div>
     </nav>
 
     <div class="my-5">
-        <section class="history-page">
+        <div class="event-header">
             <div class="container">
-                <div class="page-header">
-                    <h1 class="page-title">Our History & Legacy</h1>
-                    <p>Shaping the future through excellence in education since 1990</p>
+                <span class="badge bg-primary mb-3">Featured Event</span>
+                <h1 class="display-4 mb-3">Global Technology Summit 2024</h1>
+                <p class="lead">Join industry leaders and innovators for our flagship technology conference</p>
+            </div>
+        </div>
+    
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="event-meta">
+                        <div class="meta-item">
+                            <div class="meta-icon">
+                                <i class="far fa-calendar-alt"></i>
+                            </div>
+                            <div class="meta-content">
+                                <h5>Date & Time</h5>
+                                <p>July 15-17, 2024<br>9:00 AM - 6:00 PM</p>
+                            </div>
+                        </div>
+                        <div class="meta-item">
+                            <div class="meta-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="meta-content">
+                                <h5>Location</h5>
+                                <p>Main Conference Center<br>Nextgen University</p>
+                            </div>
+                        </div>
+                        <div class="meta-item">
+                            <div class="meta-icon">
+                                <i class="fas fa-ticket-alt"></i>
+                            </div>
+                            <div class="meta-content">
+                                <h5>Registration Fee</h5>
+                                <p>Students: $99<br>Professionals: $299</p>
+                            </div>
+                        </div>
+                        <!-- Register Button -->
+                        <button class="register-btn w-100" data-bs-toggle="modal" data-bs-target="#registerModal">Register Now</button>
+
+                        <!-- Register Modal -->
+                        <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="registerModalLabel">Event Registration</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form>
+                                            <div class="mb-3">
+                                                <label for="name" class="form-label">Name</label>
+                                                <input type="text" class="form-control" id="name" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="email" class="form-label">Email</label>
+                                                <input type="email" class="form-control" id="email" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="address" class="form-label">Address</label>
+                                                <input type="text" class="form-control" id="address" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="phone" class="form-label">Phone Number</label>
+                                                <input type="tel" class="form-control" id="phone" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="studentId" class="form-label">Student ID</label>
+                                                <input type="number" class="form-control" id="studentId" required>
+                                            </div>
+                                            <button type="submit" class="btn btn-success">Submit</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
     
-                <!-- Timeline Section -->
-                <div class="timeline-section">
-                    <div class="timeline-header">
-                        <div class="timeline-icon">
-                            <i class="fas fa-landmark"></i>
-                        </div>
-                        <h2 class="timeline-title">Our Journey Through Time</h2>
+                <div class="col-lg-8">
+                    <div class="event-details-card">
+                        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&h=400" alt="Event Overview" class="event-image">
+                        <h3>Event Overview</h3>
+                        <p>The Global Technology Summit 2024 brings together world-renowned experts, industry leaders, and innovators for three days of intense learning, networking, and collaboration. This year's theme focuses on "AI and Sustainable Technology" with workshops, keynote speeches, and panel discussions.</p>
+                        
+                        <h4 class="mt-4">Key Highlights</h4>
+                        <ul>
+                            <li>40+ Expert Speakers</li>
+                            <li>Hands-on Workshops</li>
+                            <li>Networking Sessions</li>
+                            <li>Innovation Showcase</li>
+                            <li>Career Fair</li>
+                        </ul>
                     </div>
     
-                    <div class="history-grid">
-                        <!-- Founding Years Card -->
-                        <div class="history-card">
-                            <div class="card-image">
-                                <img src="asset/img/slider/1.webp" alt="University founding">
-                            </div>
-                            <div class="card-content">
-                                <span class="card-year">1990</span>
-                                <h3 class="card-title">The Founding Vision</h3>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-                                <a href="founding-vision.html" class="read-more">
-                                    Learn More <i class="fas fa-arrow-right"></i>
-                                </a>
-                            </div>
+                    <div class="event-details-card">
+                        <h3>Event Schedule</h3>
+                        <div class="schedule-item">
+                            <h5>Day 1 - July 15</h5>
+                            <p>09:00 AM - Opening Ceremony<br>
+                               10:00 AM - Keynote Speech<br>
+                               11:30 AM - Panel Discussion<br>
+                               02:00 PM - Workshop Sessions</p>
                         </div>
-    
-                        <!-- Growth Period Card -->
-                        <div class="history-card">
-                            <div class="card-image">
-                                <img src="asset/img/slider/2.webp" alt="Campus expansion">
-                            </div>
-                            <div class="card-content">
-                                <span class="card-year">2000</span>
-                                <h3 class="card-title">Era of Expansion</h3>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
-                                <a href="#" class="read-more">
-                                    Learn More <i class="fas fa-arrow-right"></i>
-                                </a>
-                            </div>
+                        <div class="schedule-item">
+                            <h5>Day 2 - July 16</h5>
+                            <p>09:00 AM - Technical Sessions<br>
+                               11:00 AM - Innovation Showcase<br>
+                               02:00 PM - Networking Event<br>
+                               04:00 PM - Career Fair</p>
                         </div>
-    
-                        <!-- Modern Era Card -->
-                        <div class="history-card">
-                            <div class="card-image">
-                                <img src="asset/img/slider/3.webp" alt="Modern campus">
-                            </div>
-                            <div class="card-content">
-                                <span class="card-year">2020</span>
-                                <h3 class="card-title">Digital Revolution</h3>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</p>
-                                <a href="#" class="read-more">
-                                    Learn More <i class="fas fa-arrow-right"></i>
-                                </a>
-                            </div>
+                        <div class="schedule-item">
+                            <h5>Day 3 - July 17</h5>
+                            <p>09:00 AM - Workshop Sessions<br>
+                               11:00 AM - Panel Discussion<br>
+                               02:00 PM - Closing Ceremony<br>
+                               04:00 PM - Networking Reception</p>
                         </div>
                     </div>
     
-                    <!-- Stats Section -->
-                    <div class="stat-cards">
-                        <div class="stat-card">
-                            <div class="stat-number">30+</div>
-                            <div class="stat-label">Years of Excellence</div>
+                    <div class="event-details-card">
+                        <h3>Featured Speakers</h3>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="speaker-card">
+                                    <img src="https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?w=800&q=80" alt="Speaker 1" class="speaker-image">
+                                    <h5>Dr. Sarah Johnson</h5>
+                                    <p>AI Research Director<br>Tech Solutions Inc.</p>
+                                    <div class="social-links">
+                                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                                        <a href="#"><i class="fab fa-twitter"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="speaker-card">
+                                    <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?auto=format&fit=crop&w=150&h=150" alt="Speaker 2" class="speaker-image">
+                                    <h5>Prof. David Chen</h5>
+                                    <p>Head of Innovation<br>Global Tech Corp</p>
+                                    <div class="social-links">
+                                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                                        <a href="#"><i class="fab fa-twitter"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="speaker-card">
+                                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&h=150" alt="Speaker 3" class="speaker-image">
+                                    <h5>Emma Williams</h5>
+                                    <p>CEO<br>Future Technologies</p>
+                                    <div class="social-links">
+                                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                                        <a href="#"><i class="fab fa-twitter"></i></a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="stat-card">
-                            <div class="stat-number">50,000+</div>
-                            <div class="stat-label">Alumni Worldwide</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-number">200+</div>
-                            <div class="stat-label">Academic Programs</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-number">1000+</div>
-                            <div class="stat-label">Faculty Members</div>
+                    </div>
+    
+                    <div class="event-details-card">
+                        <h3>Event Gallery</h3>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img src="https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&w=400&h=300" alt="Gallery 1" class="gallery-image w-100">
+                            </div>
+                            <div class="col-md-4">
+                                <img src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=400&h=300" alt="Gallery 2" class="gallery-image w-100">
+                            </div>
+                            <div class="col-md-4">
+                                <img src="https://images.unsplash.com/photo-1484910292437-025e5d13ce87?auto=format&fit=crop&w=400&h=300" alt="Gallery 3" class="gallery-image w-100">
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
     </div>
+    
     
 
     <footer class="footer">

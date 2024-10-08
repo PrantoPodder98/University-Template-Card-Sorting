@@ -11,111 +11,33 @@
     <link rel="stylesheet" href="asset/breadcrumb.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
-        .history-page {
+        .vision-card {
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            padding: 4rem 0;
-            min-height: 100vh;
-        }
-
-        .page-header {
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-
-        .page-header::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background: #307e4a;
-            margin: 1rem auto;
-            border-radius: 2px;
-        }
-
-        .page-title {
-            color: #1a1a1a;
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .timeline-section {
-            background: white;
-            border-radius: 20px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        }
-
-        .timeline-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid #f0f0f0;
-        }
-
-        .timeline-icon {
-            width: 50px;
-            height: 50px;
-            background: #307e4a;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-        }
-
-        .timeline-title {
-            font-size: 1.8rem;
-            color: #1a1a1a;
-            margin: 0;
-        }
-
-        .history-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .history-card {
-            background: white;
             border-radius: 15px;
             overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
-
-        .history-card:hover {
+        .vision-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
         }
-
         .card-image {
-            height: 200px;
+            height: 250px;
             overflow: hidden;
-            position: relative;
         }
-
         .card-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.3s ease;
         }
-
-        .history-card:hover .card-image img {
+        .vision-card:hover .card-image img {
             transform: scale(1.1);
         }
-
         .card-content {
-            padding: 1.5rem;
+            padding: 2rem;
         }
-
         .card-year {
             display: inline-block;
             padding: 0.5rem 1rem;
@@ -125,19 +47,16 @@
             font-size: 0.9rem;
             margin-bottom: 1rem;
         }
-
         .card-title {
-            font-size: 1.25rem;
+            font-size: 2rem;
             color: #1a1a1a;
             margin-bottom: 1rem;
         }
-
         .card-text {
             color: #666;
-            line-height: 1.6;
-            margin-bottom: 1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
         }
-
         .read-more {
             color: #307e4a;
             text-decoration: none;
@@ -145,49 +64,28 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            transition: all 0.3s ease;
         }
-
         .read-more:hover {
             color: #266940;
+            gap: 0.75rem;
         }
-
-        .stat-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 3rem;
+        .vision-list {
+            list-style-type: none;
+            padding-left: 0;
         }
-
-        .stat-card {
-            background: white;
-            border-radius: 15px;
-            padding: 1.5rem;
-            text-align: center;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(0,0,0,0.08);
+        .vision-list li {
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+            position: relative;
         }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
+        .vision-list li:before {
+            content: "\f0eb";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
             color: #307e4a;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            color: #666;
-            font-size: 1rem;
-        }
-
-        @media (max-width: 768px) {
-            .history-grid {
-                grid-template-columns: 1fr;
-            }
         }
     </style>
 </head>
@@ -379,99 +277,42 @@
                 <li class="breadcrumb-item">
                     <a href="#">About</a>
                 </li>
-                <li class="breadcrumb-item active">
+                <li class="breadcrumb-item">
                     <a href="information.html">Information And History</a>
+                </li>
+                <li class="breadcrumb-item active">
+                    <a href="#">Founding Vision</a>
                 </li>
             </ol>
         </div>
     </nav>
 
-    <div class="my-5">
-        <section class="history-page">
-            <div class="container">
-                <div class="page-header">
-                    <h1 class="page-title">Our History & Legacy</h1>
-                    <p>Shaping the future through excellence in education since 1990</p>
-                </div>
-    
-                <!-- Timeline Section -->
-                <div class="timeline-section">
-                    <div class="timeline-header">
-                        <div class="timeline-icon">
-                            <i class="fas fa-landmark"></i>
-                        </div>
-                        <h2 class="timeline-title">Our Journey Through Time</h2>
-                    </div>
-    
-                    <div class="history-grid">
-                        <!-- Founding Years Card -->
-                        <div class="history-card">
-                            <div class="card-image">
-                                <img src="asset/img/slider/1.webp" alt="University founding">
-                            </div>
-                            <div class="card-content">
-                                <span class="card-year">1990</span>
-                                <h3 class="card-title">The Founding Vision</h3>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-                                <a href="founding-vision.html" class="read-more">
-                                    Learn More <i class="fas fa-arrow-right"></i>
-                                </a>
-                            </div>
-                        </div>
-    
-                        <!-- Growth Period Card -->
-                        <div class="history-card">
-                            <div class="card-image">
-                                <img src="asset/img/slider/2.webp" alt="Campus expansion">
-                            </div>
-                            <div class="card-content">
-                                <span class="card-year">2000</span>
-                                <h3 class="card-title">Era of Expansion</h3>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
-                                <a href="#" class="read-more">
-                                    Learn More <i class="fas fa-arrow-right"></i>
-                                </a>
-                            </div>
-                        </div>
-    
-                        <!-- Modern Era Card -->
-                        <div class="history-card">
-                            <div class="card-image">
-                                <img src="asset/img/slider/3.webp" alt="Modern campus">
-                            </div>
-                            <div class="card-content">
-                                <span class="card-year">2020</span>
-                                <h3 class="card-title">Digital Revolution</h3>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</p>
-                                <a href="#" class="read-more">
-                                    Learn More <i class="fas fa-arrow-right"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-    
-                    <!-- Stats Section -->
-                    <div class="stat-cards">
-                        <div class="stat-card">
-                            <div class="stat-number">30+</div>
-                            <div class="stat-label">Years of Excellence</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-number">50,000+</div>
-                            <div class="stat-label">Alumni Worldwide</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-number">200+</div>
-                            <div class="stat-label">Academic Programs</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-number">1000+</div>
-                            <div class="stat-label">Faculty Members</div>
-                        </div>
-                    </div>
-                </div>
+    <div class="container my-5">
+        <div class="vision-card">
+            <div class="card-image">
+                <img src="asset/img/slider/1.webp" alt="University founding">
             </div>
-        </section>
+            <div class="card-content">
+                <span class="card-year">1990</span>
+                <h2 class="card-title">The Founding Vision</h2>
+                <p class="card-text">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                </p>
+                <h3>Key Principles</h3>
+                <ul class="vision-list">
+                    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                    <li>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+                    <li>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</li>
+                    <li>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.</li>
+                </ul>
+                <p class="card-text">
+                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+                </p>
+                <!-- <a href="#" class="read-more">
+                    Explore Our History <i class="fas fa-arrow-right"></i>
+                </a> -->
+            </div>
+        </div>
     </div>
     
 
